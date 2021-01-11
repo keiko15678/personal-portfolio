@@ -14,6 +14,7 @@
     "@nuxtjs/axios": "^5.12.2",
     "core-js": "^3.6.5",
     "nuxt": "^2.14.6",
+    "nuxt-property-decorator": "^2.8.3",
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-brands-svg-icons": "^5.15.1",
     "@fortawesome/free-regular-svg-icons": "^5.15.1",

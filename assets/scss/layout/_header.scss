@@ -1,14 +1,54 @@
 .header {
-  display: flex;
-  color: #eee;
-  text-transform: uppercase;
-  font-size: 14px;
-  padding: 4px 0;
-  &__bg {
-    background-color: #000;
+  display: none;
+  @include grid-xl {
+    display: flex;
+    color: #eee;
+    text-transform: uppercase;
+    font-size: 14px;
+    padding: 4px 12px;
+    &__bg {
+      background-color: #000;
+    }
+    &__item {
+      text-transform: uppercase;
+      margin-right: 45px;
+      // cursor: pointer;
+    }
   }
-  &__item {
-    margin-right: 45px;
+}
+
+.headerMobile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $darken;
+  @include grid-xl {
+    display: none;
+  }
+  &__logo {
+    margin-right: auto;
+    background-image: url(/logo.png);
+    width: 200px;
+    height: 45px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
     cursor: pointer;
+  }
+  &__hamburger {
+    margin-right: auto;
+    
+  }
+  &__iconBox {
+    cursor: pointer;
+    padding: 6px 12px;
+  }
+  &__icon {
+    width: 25px;
+    height: 25px;
+    color: $primary;
+    &--search {
+      color: $secondary;
+    }
   }
 }

@@ -1,7 +1,9 @@
 @import './utils/reset';
+@import './utils/variables';
 @import './utils/utils';
 @import './utils/fonts';
-@import './utils/variables';
+@import './utils/media';
+
 
 @import './layout/body';
 @import './layout/header';

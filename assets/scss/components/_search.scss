@@ -1,34 +1,38 @@
 .search {
-  display: flex;
-  align-items: center;
-  height: 60px;
-  &__bg {
-    background-color:#292929;
-    border-bottom: 1px solid #808080;
-  }
-  &__logo {
-    background-image: url(/logo.png);
-    width: 200px;
-    height: 60px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center center;
-    cursor: pointer;
-  }
-  &__bar {
+  display: none;
+  @include grid-xl {
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: 400px;
-    margin-left: 40px;
-  }
-  &__btnBox {
-    display: flex;
-    margin-left: 20px;
-  }
-  &__funcBox {
-    display: flex;
-    margin-left: auto;
+    height: 60px;
+    padding: 0 4px;
+    &__bg {
+      background-color:#292929;
+      border-bottom: 1px solid #808080;
+    }
+    &__logo {
+      background-image: url(/logo.png);
+      width: 200px;
+      height: 60px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center center;
+      cursor: pointer;
+    }
+    &__bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 400px;
+      margin-left: 40px;
+    }
+    &__btnBox {
+      display: flex;
+      margin-left: 20px;
+    }
+    &__funcBox {
+      display: flex;
+      margin-left: auto;
+    }
   }
 }
 
@@ -38,13 +42,13 @@
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
   border-right: none;
-  border-color: #aaa;
-  border-width: 1px;
-  background-color: #808080;
+  border-color: $lighten;
+  border-width: 0px;
+  background-color: $lighten;
   padding-left: 8px;
   color: #fff;
   &:focus {
-    outline: none;
+    outline: 1px solid #ccc;
     color: #fff;
   }
   &__btn {
@@ -52,12 +56,11 @@
     align-items: center;
     justify-content: center;
     flex: 0 0 20%;
-    height: 30px;
+    height: 28px;
     background-color:#ffa31a;
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
     border-width: 0;
-    margin-top: 1px;
     cursor: pointer;
   }
   &__btnIcon {
