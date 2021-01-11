@@ -26,8 +26,7 @@ jobs:
           npm install
       - name: npm run generate
         run: |
-          npm run gulp m
-          npm run build
+          npm run generate
       - name: Commit files
         run: |
           cd $PUBLISH_DIR
