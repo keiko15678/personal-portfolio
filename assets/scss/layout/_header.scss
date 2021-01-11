@@ -1,0 +1,14 @@
+.header {
+  display: flex;
+  color: #eee;
+  text-transform: uppercase;
+  font-size: 14px;
+  padding: 4px 0;
+  &__bg {
+    background-color: #000;
+  }
+  &__item {
+    margin-right: 45px;
+    cursor: pointer;
+  }
+}

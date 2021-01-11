@@ -1,0 +1,23 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.row {
+  margin-left: -6px;
+  margin-right: -6px;
+}
+.col {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 6px;
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #ccc;
+  opacity: 1; /* Firefox */
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #ccc;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: #ccc;
+}

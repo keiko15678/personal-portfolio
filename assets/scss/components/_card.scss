@@ -1,0 +1,59 @@
+.card {
+  cursor: pointer;
+  width: 268px;
+  min-height: 250px;
+  margin-bottom: 8px;
+  padding-right: 8px;
+  // &:not(:first-child) {
+  //   margin-left: 12px;
+  // }
+  &__pic {
+    position: relative;
+    width: 260px;
+    height: 150px;
+    background-image: url(/pornPlaceholder.png);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+  &__title,
+  &__author,
+  &__footer {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%;
+  }
+  &__title {
+    font-size: 18px;
+    color: #fff;
+  }
+  &__author,
+  &__footer {
+    font-size: 14px;
+    color: #808080;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%;
+  }
+  &__footer {
+    display: flex;
+    align-items: center;
+  }
+  &__ratings {
+    margin-left: 6px;
+  }
+  &__duration {
+    display: flex;
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+    color: #fff;
+    font-size: 14px;
+  }
+  &__resolution {
+    margin-right: 4px;
+    font-weight: bold;
+  }
+}

@@ -1,0 +1,19 @@
+.tabs {
+  display: flex;
+  &__bg {
+    background-color: #292929;
+  }
+  &__item {
+    font-weight: 600;
+    padding: 12px 0;
+    width: 200px;
+    text-align: center;
+    border-bottom: 4px solid #292929;
+    color: #fff;
+    font-size: 12px;
+    cursor: pointer;
+    &--current {
+      border-bottom: 4px solid #ffa31a;
+    }
+  }
+}

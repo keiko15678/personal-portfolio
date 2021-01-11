@@ -1,75 +1,49 @@
 <template>
-  <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">
-        personal-portfolio
-      </h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
+  <div class="body__bg">
+    <main class="body container">
+      <div class="body__titleBar">
+        <h3 class="body__title">全球熱門視頻</h3>
+        <div class="body__titleBtn">
+          <button class="link">
+            <fa icon="plus" class="link__icon--small"></fa>
+            <div class="link__text">更多視頻</div>
+          </button>
+        </div>
       </div>
-    </div>
+      <div class="container">
+        <div class="row">
+          <div class="col result">
+            <div class="card" v-for="item in result" :key="item.key.id" @click="handleShowVideo(item.key.id)">
+              <div class="card__pic">
+                <div class="card__duration">
+                  <div class="card__resolution">HD</div>
+                  {{ `${Math.floor(item.duration / 60)}:${(item.duration % 60) >= 10 ? item.duration % 60 : '0' + item.duration % 60}` }}
+                </div>
+              </div>
+              <div class="card__title">{{ item.name }}</div>
+              <div class="card__author">{{ item.sourceUrl }}</div>
+              <div class="card__footer">
+                <div class="card__views">{{ (item.publishDate / 1000000000000).toFixed(1) }}M 次觀看</div>
+                <div class="card__ratings">{{ item.rating }}%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
   </div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-
-export default Vue.extend({})
+export default {
+  data() {
+    return {
+      query: '',
+      result: []
+    }
+  }
+}
 </script>
 
-<style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family:
-    'Quicksand',
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
+<style lang="scss">
 </style>
