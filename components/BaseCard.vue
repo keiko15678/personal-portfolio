@@ -1,19 +1,53 @@
 <template>
   <div class="card">
-    <div class="card__pic" @click="$emit('click-pic', $event)" :style="{ 'background-image': properties.imageUrl && properties.imageUrl !== '' ? `url(${properties.imageUrl})` : '/card-placeholder.png'}" :class="{ 'card__pic--active': properties.link && properties.link !== '', 'card__pic--disabled': !properties.link || properties.link === '' }">
+    <div
+      class="card__pic"
+      @click="$emit('click-pic', $event)"
+      :style="{
+        'background-image':
+          properties.imageUrl && properties.imageUrl !== '' ? `url(${properties.imageUrl})` : '/card-placeholder.png',
+      }"
+      :class="{
+        'card__pic--active': properties.link && properties.link !== '',
+        'card__pic--disabled': !properties.link || properties.link === '',
+      }"
+    >
       <div class="card__duration">
         <div class="card__resolution">HD</div>
-        {{ `${Math.floor(properties.duration / 60)}:${(properties.duration % 60) >= 10 ? properties.duration % 60 : '0' + properties.duration % 60}` }}
+        {{
+          `${Math.floor(properties.duration / 60)}:${
+            properties.duration % 60 >= 10 ? properties.duration % 60 : '0' + (properties.duration % 60)
+          }`
+        }}
       </div>
     </div>
     <div class="card__title">{{ properties.name }}</div>
     <div class="card__author">
       <fa icon="check-circle" class="card__authorIcon"></fa>
-      {{ properties.sourceUrl }}</div>
+      {{ properties.sourceUrl }}
+    </div>
     <div class="card__footer">
-      <div class="card__views">{{ typeof properties.publishDate === 'number' ? (properties.publishDate / 1000000000000).toFixed(1) + 'M views' : properties.publishDate }}</div>
-      <div class="card__ratings">{{ typeof properties.publishDate === 'number' ? properties.rating + '%' : properties.rating }}</div>
-      <div class="card__source" v-if="properties.source === '' || properties.source" :class="{ 'card__source--active': properties.source && properties.source !== '', 'card__source--disabled': !properties.source || properties.source === '' }" @click="$emit('click-source', $event)">Source</div>
+      <div class="card__views">
+        {{
+          typeof properties.publishDate === 'number'
+            ? (properties.publishDate / 1000000000000).toFixed(1) + 'M views'
+            : properties.publishDate
+        }}
+      </div>
+      <div class="card__ratings">
+        {{ typeof properties.publishDate === 'number' ? properties.rating + '%' : properties.rating }}
+      </div>
+      <div
+        class="card__source"
+        v-if="properties.source === '' || properties.source"
+        :class="{
+          'card__source--active': properties.source && properties.source !== '',
+          'card__source--disabled': !properties.source || properties.source === '',
+        }"
+        @click="$emit('click-source', $event)"
+      >
+        Source
+      </div>
     </div>
   </div>
 </template>
@@ -28,5 +62,4 @@ export default class BaseCard extends Vue {
 }
 </script>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>

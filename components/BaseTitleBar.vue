@@ -20,5 +20,4 @@ export default class BaseTitleBar extends Vue {
 }
 </script>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>

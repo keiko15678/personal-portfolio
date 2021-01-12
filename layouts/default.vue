@@ -12,13 +12,21 @@
     <div class="header__bg">
       <div class="container">
         <div class="header">
-          <div class="header__item" v-for="(item, index) in headers" :key="item.concat(index.toString())">{{ item }}</div>
+          <div class="header__item" v-for="(item, index) in headers" :key="item.concat(index.toString())">
+            {{ item }}
+          </div>
         </div>
       </div>
     </div>
     <div class="search__bg">
       <div class="search container">
-        <div class="search__logo" @click="$router.push('/'); tab = 0"></div>
+        <div
+          class="search__logo"
+          @click="
+            $router.push('/')
+            tab = 0
+          "
+        ></div>
         <div class="search__bar">
           <input
             type="text"
@@ -44,17 +52,20 @@
         <div class="search__funcBox">
           <button class="link link--first" @click="handleToggleDropdown($event, 'about')">
             About
-            <div class="link__dropdown" v-show="dropdown.about">v1.0.0 - inspired by <a href="https://pornhub.com" target="_blank">Pornhub.com</a></div>  
+            <div class="link__dropdown" v-show="dropdown.about">
+              v1.0.0 - inspired by <a href="https://pornhub.com" target="_blank">Pornhub.com</a>
+            </div>
           </button>
           <button class="link" @click="handleToggleDropdown($event, 'contact')">
             Contact
             <div class="link__dropdown" v-show="dropdown.contact">
               <div class="link__dropdownChild">
-                Email: <a href="mailto:keiko15678@gmail.com?subject:work-inquiries&body=work-inquiries">keiko15678@gmail.com</a>
+                Email:
+                <a href="mailto:keiko15678@gmail.com?subject:work-inquiries&body=work-inquiries"
+                  >keiko15678@gmail.com</a
+                >
               </div>
-              <div class="link__dropdownChild--last">
-                Phone: <a href="javascript:;">+8869168918091</a>
-              </div>
+              <div class="link__dropdownChild--last">Phone: <a href="javascript:;">+8869168918091</a></div>
             </div>
           </button>
         </div>
@@ -62,31 +73,39 @@
     </div>
     <div class="tabs__bg">
       <div class="tabs container">
-        <div class="tabs__item" v-for="item in tabs" :key="item.id" :class="{ 'tabs__item--current': tab === item.id }" @click="handleUpdateTab(item.id, item.route)">
+        <div
+          class="tabs__item"
+          v-for="item in tabs"
+          :key="item.id"
+          :class="{ 'tabs__item--current': tab === item.id }"
+          @click="handleUpdateTab(item.id, item.route)"
+        >
           {{ item.name }}
         </div>
       </div>
     </div>
     <div class="body__bg">
-       <div class="container">
-          <main class="body">
-            <Nuxt />
-          </main>
-       </div>
+      <div class="container">
+        <main class="body">
+          <Nuxt />
+        </main>
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue, Watch } from 'nuxt-property-decorator'
+import { Card } from '~/types/index.ts'
+import { $axios } from '~/utils/api.ts'
 
 interface links {
   [index: number]: string
 }
 
 interface tab {
-  name: string,
-  id: number,
+  name: string
+  id: number
   route: string
 }
 
@@ -104,7 +123,7 @@ export default class Index extends Vue {
     { name: 'experience', id: 0, route: '/' },
     { name: 'projects', id: 1, route: '/projects' },
     { name: 'skillset', id: 2, route: '/skillset' },
-    { name: 'background', id: 3, route: '/background' }
+    { name: 'background', id: 3, route: '/background' },
   ]
 
   private headers: Array<string> = [
@@ -122,12 +141,12 @@ export default class Index extends Vue {
 
   private map: links = {
     0: 'https://github.com/keiko15678',
-    1: 'https://www.linkedin.com/in/keiko-chuang-8185a71a3/'
+    1: 'https://www.linkedin.com/in/keiko-chuang-8185a71a3/',
   }
 
   private handleUpdateTab(tab: number, route: string): void {
     this.tab = tab
-    this.$router.push(route)
+    this.$router.push({ path: route })
     window.localStorage.setItem('tab', tab.toString())
   }
 
@@ -139,37 +158,60 @@ export default class Index extends Vue {
 
   private dropdown: any = {
     about: false,
-    contact: false
+    contact: false,
   }
 
   private handleToggleDropdown($event: Event, name: string): void {
     $event.stopPropagation()
     Object.keys(this.dropdown).forEach((item: string) => {
-      if(item !== name) {
+      if (item !== name) {
         this.dropdown[item] = false
       }
     })
     this.dropdown[name] = !this.dropdown[name]
   }
 
-  @Watch('$route.path')
-  onPathChange(val: string): void {
-    console.log(val)
-    // this.processTabChange(val)
-  }
-
   private processTabChange(route: string): void {
     const tab: string | null = window.localStorage.getItem('tab')
-    if(route === '/' || route === '/projects' || route === '/skillset' || route === '/background') {
+    if (route === '/' || route === '/projects' || route === '/skillset' || route === '/background') {
       this.tabShow = true
     }
-    if(tab !== null && this.tabShow) {
+    if (tab !== null && this.tabShow) {
       this.tab = Number(tab)
       const routeObj = this.tabs.find((item: tab) => item.id === Number(tab))
-      if(routeObj) {
+      if (routeObj) {
         this.$router.push(routeObj.route)
       }
     }
+  }
+
+  private async sendGetExperienceRequest() : Promise<any> {
+    try {
+      const res = await $axios.get('/data.json')
+      return res.data
+    } catch(e) {
+      console.log('Error: ' + e.message)
+      return []
+    }
+  }
+
+  private data: any = ''
+
+  @Watch('$route.path')
+  private onRouteChange(val: string): void {
+    console.log(val)
+    this.emitData()
+  }
+
+  private emitData(): void {
+    this.$nuxt.$emit('work', this.data.experience)
+    this.$nuxt.$emit('projects', this.data.projects)
+  }
+
+  private async created(): Promise<void> {
+    const data = await this.sendGetExperienceRequest()
+    this.data = { ...data }
+    this.emitData()
   }
 
   private mounted(): void {

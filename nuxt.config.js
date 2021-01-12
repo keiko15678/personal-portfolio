@@ -19,6 +19,7 @@ export default {
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
+    '~/plugins/axios',
     '~/plugins/fontawesome'
   ],
 
@@ -44,5 +45,9 @@ export default {
   build: {},
   router: {
     base: '/keiko15678/'
-  }
+  },
+  env: {
+    API_URL: process.env.NUXT_ENV_API_URL || 'http://localhost:3000',
+    TIMEOUT_LIMIT: process.env.NUXT_ENV_TIMEOUT_LIMIT,
+  },
 }

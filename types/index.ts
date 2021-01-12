@@ -10,5 +10,6 @@ export interface Card {
   imageUrl?: string,
   fullName?: string,
   stack?: Array<string>,
-  comments?: Array<string>
+  comments?: Array<string>,
+  location?: string
 }

@@ -4,7 +4,13 @@
     <div class="container">
       <div class="row">
         <div class="col result">
-          <BaseCard :properties="item" v-for="item in workProjects" :key="item.id" @click-pic="handleVisitLink(item.link)" @click-source="handleVisitLink(item.source)" />
+          <BaseCard
+            :properties="item"
+            v-for="item in workProjects"
+            :key="item.id"
+            @click-pic="handleVisitLink(item.link)"
+            @click-source="handleVisitLink(item.source)"
+          />
         </div>
       </div>
     </div>
@@ -12,7 +18,13 @@
     <div class="container">
       <div class="row">
         <div class="col result">
-          <BaseCard :properties="item" v-for="item in personalProjects" :key="item.id" @click-pic="handleVisitLink(item.link)" @click-source="handleVisitLink(item.source)" />
+          <BaseCard
+            :properties="item"
+            v-for="item in personalProjects"
+            :key="item.id"
+            @click-pic="handleVisitLink(item.link)"
+            @click-source="handleVisitLink(item.source)"
+          />
         </div>
       </div>
     </div>
@@ -20,7 +32,13 @@
     <div class="container">
       <div class="row">
         <div class="col result">
-          <BaseCard :properties="item" v-for="item in templates" :key="item.id" @click-pic="handleVisitLink(item.link)" @click-source="handleVisitLink(item.source)" />
+          <BaseCard
+            :properties="item"
+            v-for="item in templates"
+            :key="item.id"
+            @click-pic="handleVisitLink(item.link)"
+            @click-source="handleVisitLink(item.source)"
+          />
         </div>
       </div>
     </div>
@@ -37,41 +55,40 @@ import BaseCard from '~/components/BaseCard.vue'
   layout: 'default',
   components: {
     BaseTitleBar,
-    BaseCard
-  }
+    BaseCard,
+  },
 })
 export default class Projects extends Vue {
-  private workProjects: Array<Card> = [
-    { id: 0, imageUrl: '/mayo-landing.png', link: 'https://preview-mayo-official-rg1.azurewebsites.net/', source: '', duration: 1234, name: 'MAYO Landing Client', sourceUrl: 'React + Gatsby', publishDate: 3000050000000, rating: 99 },
-    { id: 1, imageUrl: '/soccer-animation-client.png', link: '', duration: 1234, name: 'Soccer Animation Client', source: 'https://github.com/keiko15678/soccer-animation-frontend', sourceUrl: 'Vue + PixiJS', publishDate: 3000050000000, rating: 99 },
-    { id: 2, imageUrl: '', link: '', duration: 1234, name: 'Soccer Animation Server', source: 'https://github.com/keiko15678/soccer-animation-server', sourceUrl: 'Node.js (ES6) + Webpack', publishDate: 3000050000000, rating: 99 },
-    { id: 3, imageUrl: '/lasso-1.png', link: '', duration: 1234, name: 'Lasso Assessment Client + CMS', source: 'https://github.com/keiko15678/lasso-frontend', sourceUrl: 'Nuxt + Typescript', publishDate: 3000050000000, rating: 99 },
-    { id: 4, imageUrl: '/stayfun-fe.png', link: 'https://tst-stayfun.mayohr.com', duration: 1234, name: 'STAYFUN Client', source:'', sourceUrl: 'Nuxt + Typescript + .NET Core', publishDate: 3000050000000, rating: 99 },
-    { id: 5, imageUrl: '/stayfun-be.png', link: '', duration: 1234, name: 'STAYFUN CMS', sourceUrl: 'Nuxt + Typescript + .NET Core', source:'https://github.com/keiko15678/ecommerce-cms-nuxt-ts', publishDate: 3000050000000, rating: 99 },
-    { id: 6, imageUrl: '', link: '', duration: 1234, name: 'Forward Proxy (Http/Socket)', source: 'https://github.com/keiko15678/proxy-deno-with-auth-db', sourceUrl: 'Deno + Typescript + mySQL', publishDate: 3000050000000, rating: 99 },
-    { id: 7, imageUrl: '/sms.png', link: '', source: 'https://github.com/keiko15678/sms-sender-android-js', duration: 1234, name: 'Chat/Messenger Client for Android (.apk)', sourceUrl: 'JS + Androidjs', publishDate: 3000050000000, rating: 99 },
-    { id: 8, imageUrl: '', link: '', source: 'https://github.com/keiko15678/sms-sender-backend', duration: 1234, name: 'Chat/Messenger Backend', sourceUrl: 'Node.js + pgSQL', publishDate: 3000050000000, rating: 99 }
-  ]
+  private workProjects: Array<Card> = []
 
-  private personalProjects: Array<Card> = [
-    { id: 9, imageUrl: '/portfolio.png', link: '', source: 'https://github.com/keiko15678/personal-portfolio', duration: 1234, name: 'Portfolio Client', sourceUrl: 'Nuxt + TS', publishDate: 3000050000000, rating: 99 },
-    { id: 10, imageUrl: '/maskmap-vue.png', link: 'https://keiko15678.github.io/maskmap/', source: 'https://github.com/keiko15678/maskmap', duration: 1234, name: 'Taiwan Mask Availability Map', sourceUrl: 'Nuxt + TS', publishDate: 3000050000000, rating: 99 },
-    { id: 11, imageUrl: '/calendar-vue.png', link: 'https://keiko15678.github.io/calendarapp-vue/#/', source: 'https://github.com/keiko15678/calendarapp-vue', duration: 1234, name: 'Calendar Booking Client + Server (LINE Login)', sourceUrl: 'Vue + Node.js', publishDate: 3000050000000, rating: 99 },
-    { id: 12, imageUrl: '/shop-site-vue.png', link: 'https://keiko15678.github.io/shopsite-vue/#/', source: 'https://github.com/keiko15678/shopsite-vue', duration: 1234, name: 'Mini Ecommerce Client/CMS (LINE PAY)', sourceUrl: 'Vue + Node.js', publishDate: 3000050000000, rating: 99 },
-    { id: 13, imageUrl: '', link: '', source: 'https://github.com/keiko15678/shopsite-vue-api', duration: 1234, name: 'Mini Ecommerce API', sourceUrl: 'Node.js + MongoDB + Firebase Auth/Db', publishDate: 3000050000000, rating: 99 },
-    { id: 14, imageUrl: '/hotel-booking.png', link: 'https://keiko15678.github.io/hotel-demo/', source: 'https://github.com/keiko15678/hotel-demo', duration: 1234, name: 'Hotel Booking Client', sourceUrl: 'ES6 + JQuery', publishDate: 3000050000000, rating: 99 },
-    { id: 15, imageUrl: '/ecommerce-lavine.png', link: 'https://safe-ridge-34093.herokuapp.com/', source: 'https://github.com/keiko15678/ecommerce_lavine', duration: 1234, name: 'Mini Ecommerce #2 Client + Server (Paypal, Stripe)', sourceUrl: 'ES6 + JQuery + Node.js', publishDate: 3000050000000, rating: 99 }
-  ]
+  private personalProjects: Array<Card> = []
 
-  private templates: Array<Card> = [
-    { id: 16, imageUrl: '', link: '', source: 'https://github.com/keiko15678/node-server-es5-webpack-template', duration: 1234, name: 'Node.js ES5 + Webpack Config', sourceUrl: 'Node.js', publishDate: 3000050000000, rating: 99 },
-    { id: 17, imageUrl: '', link: '', source: 'https://github.com/keiko15678/scss-snippet', duration: 1234, name: 'SCSS Snippets + Grid System', sourceUrl: 'Sass', publishDate: 3000050000000, rating: 99 },
-  ]
+  private templates: Array<Card> = []
 
   private handleVisitLink(link: string) {
-    if(link && link !== '') {
+    if (link && link !== '') {
       window.open(link, '_blank')
     }
+  }
+
+  private created(): void {
+    this.$nuxt.$on('projects', (data: any) => {
+      this.workProjects = [ ...data.enterprise ]
+      this.personalProjects = [ ...data.personal ]
+      this.templates = [ ...data.template ]
+    })
+  }
+
+  private activated(): void {
+    this.$nuxt.$on('projects', (data: any) => {
+      this.workProjects = [ ...data.enterprise ]
+      this.personalProjects = [ ...data.personal ]
+      this.templates = [ ...data.template ]
+    })
+  }
+
+  private deactivated(): void {
+    // this.$nuxt.$off('projects')
   }
 }
 </script>

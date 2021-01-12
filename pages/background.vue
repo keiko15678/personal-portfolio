@@ -18,13 +18,19 @@ import { Card } from '~/types/index.ts'
 @Component({
   layout: 'default',
 })
-
 export default class Background extends Vue {
   private edu: Array<Card> = [
-    { id: 2, imageUrl: '/bu.jfif', duration: 1234, name: 'Boston University', sourceUrl: '08/2015 - 05/2018', publishDate: 'Bachelor\'s in Computer Science', rating: '' },
+    {
+      id: 2,
+      imageUrl: '/bu.jfif',
+      duration: 1234,
+      name: 'Boston University',
+      sourceUrl: '08/2015 - 05/2018',
+      publishDate: "Bachelor's in Computer Science",
+      rating: '',
+    },
   ]
 }
 </script>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>

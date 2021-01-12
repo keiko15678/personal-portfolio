@@ -5,11 +5,19 @@
         <div class="box">
           <div class="vid">
             <div class="vid__content">
-              <div class="vid__btn vid__btn--prev" v-show="slides.length > 0 && slide > 0" @click="handleSlideUpdate(-1)">
+              <div
+                class="vid__btn vid__btn--prev"
+                v-show="slides.length > 0 && slide > 0"
+                @click="handleSlideUpdate(-1)"
+              >
                 <fa :icon="['fas', 'arrow-left']" class="btn__icon--small"></fa>
               </div>
-              <img :src="slideUrl" alt="Image">
-              <div class="vid__btn vid__btn--next" v-show="slides.length > 0 && slide < slides.length - 1" @click="handleSlideUpdate(1)">
+              <img :src="slideUrl" alt="Image" />
+              <div
+                class="vid__btn vid__btn--next"
+                v-show="slides.length > 0 && slide < slides.length - 1"
+                @click="handleSlideUpdate(1)"
+              >
                 <fa :icon="['fas', 'arrow-right']" class="btn__icon--small"></fa>
               </div>
             </div>
@@ -21,13 +29,13 @@
               <div class="vid__status">
                 <div class="vid__statusLeft">
                   <div class="vid__li vid__statusNum">{{ info.publishDate }}&nbsp;</div>
-                  <div class="vid__li vid__statusRate">&nbsp;.25 years&nbsp;</div>
-                  <div class="vid__li vid__li--last vid__statusDate">&nbsp;90 days ago</div>
+                  <div class="vid__li vid__statusRate">&nbsp;{{ info.rating ? info.rating.split('-')[1] : 'Frontend Engineer' }}&nbsp;</div>
+                  <div class="vid__li vid__li--last vid__statusDate">&nbsp;{{ info.location }}</div>
                 </div>
                 <div class="vid__statusRight">
                   <div class="vid__toolBtn vid__upvote">
                     <fa :icon="['fas', 'thumbs-up']" class="vid__toolBtnIcon btn__icon--small"></fa>
-                    999
+                    {{ Math.floor(Math.random(0, 1) * 100) }}
                   </div>
                   <div class="vid__toolBtn vid__downvote">
                     <fa :icon="['fas', 'thumbs-down']" class="vid__toolBtnIcon btn__icon--small"></fa>
@@ -72,32 +80,37 @@
                 <div class="vid__showMoreText">Show More</div>
               </div>
             </div>
+            <div class="vidComments">
+              <div class="vidComments__title">Job Description ({{ info.comments.length }})</div>
+              <div class="vidComments__box" v-for="item in info.comments" :key="item">
+                <div class="vidComments__user">
+                  <div class="vidComments__userDp"></div>
+                  <div class="vidComments__userName">keiko15678</div>
+                  <div class="vidComments__date">1 week ago</div>
+                </div>
+                <div class="vidComments__content">{{ item }}</div>
+                <div class="vidComments__votes">
+                  <div class="vid__toolBtn vid__upvote vidComments__upvote">
+                    <fa :icon="['fas', 'thumbs-up']" class="vid__toolBtnIcon btn__icon--small"></fa>
+                    {{ Math.floor(Math.random(0, 1) * 100) }}
+                  </div>
+                  <div class="vid__toolBtn vid__downvote">
+                    <fa :icon="['fas', 'thumbs-down']" class="vid__toolBtnIcon btn__icon--small"></fa>
+                    0
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="vidSide">
             <div class="vidSide__title">Related</div>
             <div class="vidSide__content">
-              <BaseCard :properties="item" v-for="item in related" :key="item.id" @click-pic="handleVisitLink(item.link)" />
-            </div>
-          </div>
-          <div class="vidComments">
-            <div class="vidComments__title">Job Description ({{ info.comments.length }})</div>
-            <div class="vidComments__box" v-for="item in info.comments" :key="item">
-              <div class="vidComments__user">
-                <div class="vidComments__userDp"></div>
-                <div class="vidComments__userName">keiko15678</div>
-                <div class="vidComments__date">1 week ago</div>
-              </div>
-              <div class="vidComments__content">{{ item }}</div>
-              <div class="vidComments__votes">
-                <div class="vid__toolBtn vid__upvote vidComments__upvote">
-                  <fa :icon="['fas', 'thumbs-up']" class="vid__toolBtnIcon btn__icon--small"></fa>
-                  999
-                </div>
-                <div class="vid__toolBtn vid__downvote">
-                  <fa :icon="['fas', 'thumbs-down']" class="vid__toolBtnIcon btn__icon--small"></fa>
-                  0
-                </div>
-              </div>
+              <BaseCard
+                :properties="item"
+                v-for="item in related"
+                :key="item.id"
+                @click-pic="handleVisitLink(item.link)"
+              />
             </div>
           </div>
         </div>
@@ -116,8 +129,8 @@ import BaseCard from '~/components/BaseCard.vue'
   layout: 'default',
   components: {
     BaseTitleBar,
-    BaseCard
-  }
+    BaseCard,
+  },
 })
 export default class WorkInno extends Vue {
   private stack: Array<string> = []
@@ -127,7 +140,7 @@ export default class WorkInno extends Vue {
   private slides: Array<string> = []
 
   private get slideUrl(): string {
-    return this.slides.length ? this.slides[this.slide] : '/card-placeholder.png'
+    return this.slides.length ? this.slides[this.slide] !== '' ? this.slides[this.slide] : '/card-placeholder.png' : '/card-placeholder.png'
   }
 
   private get related(): Array<any> {
@@ -135,12 +148,12 @@ export default class WorkInno extends Vue {
   }
 
   private handleSlideUpdate(direction: number): void {
-    if(direction === -1) {
-      if(this.slide > 0) {
+    if (direction === -1) {
+      if (this.slide > 0) {
         this.slide += direction
       }
-    } else if(direction === 1) {
-      if(this.slide < this.slides.length - 1) {
+    } else if (direction === 1) {
+      if (this.slide < this.slides.length - 1) {
         this.slide += direction
       }
     }
@@ -150,21 +163,18 @@ export default class WorkInno extends Vue {
 
   private created(): void {
     try {
-      if(this.$route.query.info) {
+      if (this.$route.query.info) {
         // ts-lint-disable-next-line
         const info = JSON.parse(this.$route.query.info)
         this.stack = info.stack
         this.slides = [info.imageUrl]
         this.info = info
       }
-    } catch(e) {
+    } catch (e) {
       console.log(e.message)
     }
   }
 }
 </script>
 
-<style lang="scss" scoped>
-
-
-</style>
+<style lang="scss" scoped></style>
