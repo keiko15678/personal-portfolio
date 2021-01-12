@@ -1,15 +1,15 @@
-@import './utils/reset';
-@import './utils/variables';
-@import './utils/utils';
-@import './utils/fonts';
-@import './utils/media';
+@import "./utils/reset";
+@import "./utils/variables";
+@import "./utils/fonts";
+@import "./utils/utils";
+@import "./utils/media";
 
+@import "./layout/body";
+@import "./layout/header";
 
-@import './layout/body';
-@import './layout/header';
-
-@import './components/btn';
-@import './components/card';
-@import './components/link';
-@import './components/search';
-@import './components/tabs';
+@import "./components/btn";
+@import "./components/card";
+@import "./components/link";
+@import "./components/search";
+@import "./components/tabs";
+@import "./components/vid";

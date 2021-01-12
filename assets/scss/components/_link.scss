@@ -1,4 +1,5 @@
 .link {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,9 +21,35 @@
     margin-left: 4px;
   }
   &--lg {
-    font-size: 16PX;
+    font-size: 16px;
   }
   &--first {
     margin-right: 16px;
+  }
+  &__dropdown {
+    position: absolute;
+    top: 120%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    min-width: 250px;
+    padding: 8px 6px;
+    background-color: #fff;
+    border-radius: 4px;
+    &:before {
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      z-index: 5;
+      transform: translate(-50%, 0);
+      display: block;
+      content: "";
+      border-top: 5px solid transparent;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-bottom: 5px solid #fff;
+    }
+  }
+  &__dropdownChild {
+    margin-bottom: 6px;
   }
 }

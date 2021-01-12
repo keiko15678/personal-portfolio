@@ -3,9 +3,12 @@ export interface Card {
   duration: number,
   name: string,
   sourceUrl: string,
-  publishDate: number,
-  rating: number,
+  publishDate: number | string,
+  rating: number | string,
   link?: string,
   source?: string,
-  imageUrl?: string
+  imageUrl?: string,
+  fullName?: string,
+  stack?: Array<string>,
+  comments?: Array<string>
 }

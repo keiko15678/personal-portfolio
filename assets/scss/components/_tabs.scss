@@ -2,6 +2,7 @@
   display: none;
   @include grid-xl {
     display: flex;
+    padding: 0 12px;
     &__bg {
       background-color: #292929;
     }
@@ -21,5 +22,4 @@
       }
     }
   }
-  
 }

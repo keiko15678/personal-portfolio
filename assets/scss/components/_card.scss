@@ -8,10 +8,16 @@
     width: 260px;
     height: 150px;
     background-image: url(/card-placeholder.png);
-    background-size: cover;
+    background-color: #fff;
+    background-size: contain;
     background-position: center center;
     background-repeat: no-repeat;
-    cursor: pointer;
+    &--active {
+      cursor: pointer;
+    }
+    &--disabled {
+      cursor: not-allowed;
+    }
   }
   &__title,
   &__author,
@@ -71,7 +77,6 @@
   &__source {
     margin-left: auto;
     margin-right: 12px;
-    
     &--active {
       color: $primary;
       text-decoration: underline;
