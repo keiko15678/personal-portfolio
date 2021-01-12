@@ -15,6 +15,7 @@
 import { Component, Vue, Prop } from 'nuxt-property-decorator'
 import { Card } from '~/types/index.ts'
 import { $axios } from '~/utils/api.ts'
+import { dataStore } from '~/store/index'
 
 @Component({
   layout: 'default'
@@ -36,19 +37,15 @@ export default class Projects extends Vue {
   }
 
   private created(): void {
-    this.$nuxt.$on('work', (data: any) => {
-      this.work = { ...data }
-    })
-  }
+    // this.$nuxt.$on('work', (data: any) => {
+    //   this.work = { ...data }
+    // })
 
-  private activated(): void {
-    this.$nuxt.$on('work', (data: any) => {
-      this.work = { ...data }
-    })
-  }
+    console.log(dataStore)
 
-  private deactivated(): void {
-    // this.$nuxt.$off('work')
+
+    dataStore.getPermissionList({ token: '123' })
+    // dataStore.setPermissionList('payload')
   }
 }
 </script>
