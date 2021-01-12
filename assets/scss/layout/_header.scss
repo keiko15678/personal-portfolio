@@ -15,8 +15,12 @@
     }
   }
 }
-
 .headerMobile {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -48,6 +52,39 @@
     color: $primary;
     &--search {
       color: $secondary;
+    }
+  }
+}
+.navMobile {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  margin-top: 45px;
+  width: 80vw;
+  height: 100vh;
+  background-color: $darken;
+  border-right: 1px solid $darken;
+  &__mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 98;
+    margin-top: 45px;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, .3);
+  }
+  &__item {
+    cursor: pointer;
+    color: #fff;
+    border-bottom: 1px solid $darken;
+    padding: 12px;
+    text-transform: uppercase;
+    font-size: 14px;
+    &--current {
+      color: $primary;
+      font-weight: bold;
     }
   }
 }

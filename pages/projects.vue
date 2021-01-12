@@ -6,7 +6,7 @@
         <div class="col result">
           <BaseCard
             :properties="item"
-            v-for="item in workProjects"
+            v-for="item in projects.enterprise"
             :key="item.id"
             @click-pic="handleVisitLink(item.link)"
             @click-source="handleVisitLink(item.source)"
@@ -20,7 +20,7 @@
         <div class="col result">
           <BaseCard
             :properties="item"
-            v-for="item in personalProjects"
+            v-for="item in projects.personal"
             :key="item.id"
             @click-pic="handleVisitLink(item.link)"
             @click-source="handleVisitLink(item.source)"
@@ -34,7 +34,7 @@
         <div class="col result">
           <BaseCard
             :properties="item"
-            v-for="item in templates"
+            v-for="item in projects.template"
             :key="item.id"
             @click-pic="handleVisitLink(item.link)"
             @click-source="handleVisitLink(item.source)"
@@ -47,9 +47,10 @@
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
-import { Card } from '~/types/index.ts'
+import { Card, ProjectTypes } from '~/types/index.ts'
 import BaseTitleBar from '~/components/BaseTitleBar.vue'
 import BaseCard from '~/components/BaseCard.vue'
+import { dataStore } from '~/store/index'
 
 @Component({
   layout: 'default',
@@ -59,36 +60,18 @@ import BaseCard from '~/components/BaseCard.vue'
   },
 })
 export default class Projects extends Vue {
-  private workProjects: Array<Card> = []
-
-  private personalProjects: Array<Card> = []
-
-  private templates: Array<Card> = []
-
   private handleVisitLink(link: string) {
     if (link && link !== '') {
       window.open(link, '_blank')
     }
   }
 
-  private created(): void {
-    this.$nuxt.$on('projects', (data: any) => {
-      this.workProjects = [ ...data.enterprise ]
-      this.personalProjects = [ ...data.personal ]
-      this.templates = [ ...data.template ]
-    })
+  private get projects(): ProjectTypes {
+    return dataStore.data.projects ? dataStore.data.projects : {}
   }
 
-  private activated(): void {
-    this.$nuxt.$on('projects', (data: any) => {
-      this.workProjects = [ ...data.enterprise ]
-      this.personalProjects = [ ...data.personal ]
-      this.templates = [ ...data.template ]
-    })
-  }
-
-  private deactivated(): void {
-    // this.$nuxt.$off('projects')
+  private mounted(): void {
+    window.scrollTo(0, 0)
   }
 }
 </script>

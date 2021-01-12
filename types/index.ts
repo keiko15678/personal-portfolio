@@ -13,3 +13,40 @@ export interface Card {
   comments?: Array<string>,
   location?: string
 }
+
+export interface Links {
+  [index: number]: string
+}
+
+export interface Tab {
+  name: string
+  id: number
+  route: string
+}
+
+export interface Info {
+  email: string
+  phone: number
+}
+
+export interface Settings {
+  tabs: Array<Tab>,
+  headers: Array<String>,
+  externalLinkMap: Links
+}
+
+export interface ProjectTypes {
+  enterprise: Array<Card>,
+  personal: Array<Card>,
+  template: Array<Card>
+}
+
+export interface Skillset {
+  concepts: Array<Card>,
+  databases: Array<Card>,
+  devops: Array<Card>,
+  jsFrameworks: Array<Card>,
+  languages: Array<Card>,
+  os: Array<Card>,
+  webServers: Array<Card>
+}

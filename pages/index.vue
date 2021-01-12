@@ -4,7 +4,7 @@
     <div class="container">
       <div class="row">
         <div class="col result">
-          <BaseCard :properties="item" v-for="item in work" :key="item.id" @click-pic="handleVisitLink(item.link)" />
+          <BaseCard :properties="item" v-for="item in experience" :key="item.id" @click-pic="handleVisitLink(item.link)" />
         </div>
       </div>
     </div>
@@ -21,31 +21,25 @@ import { dataStore } from '~/store/index'
   layout: 'default'
 })
 export default class Projects extends Vue {
-  private work: Array<Card> = []
-
   private handleVisitLink(link: string) {
     if (link && link !== '') {
-      const info: Card | undefined = this.work.find((item: Card) => item.link === link)
+      const info: Card | undefined = this.experience.find((item: Card) => item.link === link)
       this.$router.push({
         path: link,
         query: {
           info: info ? JSON.stringify(info) : '',
-          related: JSON.stringify(this.work.filter((item: Card) => item.link !== link)),
+          related: JSON.stringify(this.experience.filter((item: Card) => item.link !== link)),
         },
       })
     }
   }
 
+  private get experience(): Array<Card> {
+    return dataStore.data ? dataStore.data.experience : []
+  }
+
   private created(): void {
-    // this.$nuxt.$on('work', (data: any) => {
-    //   this.work = { ...data }
-    // })
 
-    console.log(dataStore)
-
-
-    dataStore.getPermissionList({ token: '123' })
-    // dataStore.setPermissionList('payload')
   }
 }
 </script>

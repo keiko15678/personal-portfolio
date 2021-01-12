@@ -4,7 +4,7 @@
     <div class="container">
       <div class="row">
         <div class="col result">
-          <BaseCard :properties="item" v-for="item in edu" :key="item.id" />
+          <BaseCard :properties="item" v-for="item in education" :key="item.id" />
         </div>
       </div>
     </div>
@@ -14,22 +14,15 @@
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
 import { Card } from '~/types/index.ts'
+import { dataStore } from '~/store/index'
 
 @Component({
   layout: 'default',
 })
 export default class Background extends Vue {
-  private edu: Array<Card> = [
-    {
-      id: 2,
-      imageUrl: '/bu.jfif',
-      duration: 1234,
-      name: 'Boston University',
-      sourceUrl: '08/2015 - 05/2018',
-      publishDate: "Bachelor's in Computer Science",
-      rating: '',
-    },
-  ]
+  private get education(): Array<Card> {
+    return dataStore.data.background ? dataStore.data.background.education : []
+  }
 }
 </script>
 

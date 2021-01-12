@@ -19,5 +19,3 @@ export default class BaseTitleBar extends Vue {
   @Prop({ required: true }) readonly label!: string
 }
 </script>
-
-<style lang="scss"></style>

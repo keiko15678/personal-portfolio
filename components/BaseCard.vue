@@ -61,5 +61,3 @@ export default class BaseCard extends Vue {
   @Prop({ required: true }) readonly properties!: Card
 }
 </script>
-
-<style lang="scss"></style>

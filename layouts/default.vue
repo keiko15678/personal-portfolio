@@ -1,19 +1,35 @@
 <template>
   <div>
     <div class="headerMobile">
-      <div class="headerMobile__hamburger headerMobile__iconBox">
+      <div class="headerMobile__hamburger headerMobile__iconBox" @click="navOpen = !navOpen">
         <fa icon="bars" class="headerMobile__icon"></fa>
       </div>
-      <div class="headerMobile__logo"></div>
+      <div class="headerMobile__logo"
+        @click="$router.push('/');tab = 0"
+      ></div>
       <div class="headerMobile__iconBox">
         <fa icon="search" class="headerMobile__icon headerMobile__icon--search"></fa>
       </div>
     </div>
+    <transition name="slide">
+    <div class="navMobile__mask" v-show="navOpen">
+      <div class="navMobile">
+        <div class="navMobile__item" :class="{ 'navMobile__item--current': tab === item.id }" v-for="item in tabs" :key="item.id" @click="handleUpdateTab(item.id, item.route)">{{ item.name }}</div>
+      </div>
+    </div>
+    </transition>
     <div class="header__bg">
-      <div class="container">
+      <div class="container" v-if="headers.length">
         <div class="header">
           <div class="header__item" v-for="(item, index) in headers" :key="item.concat(index.toString())">
             {{ item }}
+          </div>
+        </div>
+      </div>
+      <div class="container" v-else>
+        <div class="header">
+          <div class="header__item">
+            THIS
           </div>
         </div>
       </div>
@@ -53,7 +69,7 @@
           <button class="link link--first" @click="handleToggleDropdown($event, 'about')">
             About
             <div class="link__dropdown" v-show="dropdown.about">
-              v1.0.0 - inspired by <a href="https://pornhub.com" target="_blank">Pornhub.com</a>
+              {{ 'v' + info.version || '1.0' }}- inspired by <a href="https://pornhub.com" target="_blank">Pornhub.com</a>
             </div>
           </button>
           <button class="link" @click="handleToggleDropdown($event, 'contact')">
@@ -61,18 +77,18 @@
             <div class="link__dropdown" v-show="dropdown.contact">
               <div class="link__dropdownChild">
                 Email:
-                <a href="mailto:keiko15678@gmail.com?subject:work-inquiries&body=work-inquiries"
-                  >keiko15678@gmail.com</a
-                >
+                <a href="mailto:keiko15678@gmail.com?subject:work-inquiries&body=work-inquiries">
+                  {{ info.email }}
+                </a>
               </div>
-              <div class="link__dropdownChild--last">Phone: <a href="javascript:;">+8869168918091</a></div>
+              <div class="link__dropdownChild--last">Phone: <a href="javascript:;">{{ info.phone }}</a></div>
             </div>
           </button>
         </div>
       </div>
     </div>
     <div class="tabs__bg">
-      <div class="tabs container">
+      <div class="tabs container" v-if="tabs.length">
         <div
           class="tabs__item"
           v-for="item in tabs"
@@ -81,6 +97,13 @@
           @click="handleUpdateTab(item.id, item.route)"
         >
           {{ item.name }}
+        </div>
+      </div>
+      <div class="tabs container" v-else>
+        <div
+          class="tabs__item"
+        >
+          HOME
         </div>
       </div>
     </div>
@@ -96,62 +119,47 @@
 
 <script lang="ts">
 import { Component, Vue, Watch } from 'nuxt-property-decorator'
-import { Card } from '~/types/index.ts'
+import { Card, Links, Tab, Settings, Info } from '~/types/index.ts'
 import { $axios } from '~/utils/api.ts'
-
-interface links {
-  [index: number]: string
-}
-
-interface tab {
-  name: string
-  id: number
-  route: string
-}
+import { dataStore } from '~/store/index'
 
 @Component({
   layout: 'default',
 })
 export default class Index extends Vue {
+  private navOpen: boolean = false
+
   private query: string = ''
 
   private tabShow: boolean = false
 
-  private tab: number = 999
+  private static tabInit: number = 999999999
 
-  private tabs: Array<tab> = [
-    { name: 'experience', id: 0, route: '/' },
-    { name: 'projects', id: 1, route: '/projects' },
-    { name: 'skillset', id: 2, route: '/skillset' },
-    { name: 'background', id: 3, route: '/background' },
-  ]
+  private tab: number = Index.tabInit
 
-  private headers: Array<string> = [
-    'THIS',
-    'SITE',
-    'IS',
-    'FOR',
-    'PORTFOLIO',
-    'SHOWCASE',
-    'AND',
-    'DEMONSTRATION',
-    'PURPOSES',
-    'ONLY',
-  ]
-
-  private map: links = {
-    0: 'https://github.com/keiko15678',
-    1: 'https://www.linkedin.com/in/keiko-chuang-8185a71a3/',
+  private processTabChange(route: string): void {
+    const tab: string | null = window.localStorage.getItem('tab')
+    if (route === '/' || route === '/projects' || route === '/skillset' || route === '/background' || route === '/blog') {
+      this.tabShow = true
+    }
+    if (tab !== null && this.tabShow) {
+      this.tab = Number(tab)
+      const routeObj = this.tabs.find((item: Tab) => item.id === Number(tab))
+      if (routeObj) {
+        this.$router.push(routeObj.route)
+      }
+    }
   }
 
   private handleUpdateTab(tab: number, route: string): void {
     this.tab = tab
     this.$router.push({ path: route })
     window.localStorage.setItem('tab', tab.toString())
+    this.navOpen = false
   }
 
   private handleExternalLink(id: number): void {
-    window.open(this.map[id], '_blank')
+    window.open(this.externalLinkMap[id], '_blank')
   }
 
   private handleSearch(): void {}
@@ -171,52 +179,48 @@ export default class Index extends Vue {
     this.dropdown[name] = !this.dropdown[name]
   }
 
-  private processTabChange(route: string): void {
-    const tab: string | null = window.localStorage.getItem('tab')
-    if (route === '/' || route === '/projects' || route === '/skillset' || route === '/background') {
-      this.tabShow = true
-    }
-    if (tab !== null && this.tabShow) {
-      this.tab = Number(tab)
-      const routeObj = this.tabs.find((item: tab) => item.id === Number(tab))
-      if (routeObj) {
-        this.$router.push(routeObj.route)
-      }
-    }
+  private get settings(): Settings {
+    return dataStore.data.settings ? dataStore.data.settings : {}
   }
 
-  private async sendGetExperienceRequest() : Promise<any> {
-    try {
-      const res = await $axios.get('/data.json')
-      return res.data
-    } catch(e) {
-      console.log('Error: ' + e.message)
-      return []
-    }
+  private get headers(): Array<String> {
+    return this.settings.headers ? this.settings.headers : []
   }
 
-  private data: any = ''
-
-  @Watch('$route.path')
-  private onRouteChange(val: string): void {
-    console.log(val)
-    this.emitData()
+  private get tabs(): Array<Tab> {
+    return this.settings.tabs ? this.settings.tabs : []
   }
 
-  private emitData(): void {
-    this.$nuxt.$emit('work', this.data.experience)
-    this.$nuxt.$emit('projects', this.data.projects)
+  private get externalLinkMap(): Links {
+    return this.settings.externalLinkMap ? this.settings.externalLinkMap : {}
   }
 
+  private get info(): Info {
+    return dataStore.data.info ? dataStore.data.info : {}
+  }
+  
   private async created(): Promise<void> {
-    const data = await this.sendGetExperienceRequest()
-    this.data = { ...data }
-    this.emitData()
+  }
+
+  private hideScrollbarWhenLoading(loading: boolean): void {
+    const body = document.querySelector('body')
+    
+    console.log(body)
+    if(loading && body) {
+      body.style.overflow = 'hidden'
+    } else if(!loading && body) {
+      body.style.overflow = 'auto'
+    }
   }
 
   private mounted(): void {
     const route: string = this.$route.path
     this.processTabChange(route)
+    this.$nextTick(async () => {
+      this.$nuxt.$loading.start()
+      await dataStore.sendGetExperienceRequest()
+      this.$nuxt.$loading.finish()
+    })
   }
 }
 </script>

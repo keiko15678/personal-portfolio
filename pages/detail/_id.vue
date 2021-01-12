@@ -144,7 +144,7 @@ export default class WorkInno extends Vue {
   }
 
   private get related(): Array<any> {
-    return JSON.parse(this.$route.query.related) || []
+    return JSON.parse(this.$route.query.related.toString()) || []
   }
 
   private handleSlideUpdate(direction: number): void {
@@ -164,8 +164,7 @@ export default class WorkInno extends Vue {
   private created(): void {
     try {
       if (this.$route.query.info) {
-        // ts-lint-disable-next-line
-        const info = JSON.parse(this.$route.query.info)
+        const info = JSON.parse(this.$route.query.info.toString())
         this.stack = info.stack
         this.slides = [info.imageUrl]
         this.info = info
@@ -176,5 +175,3 @@ export default class WorkInno extends Vue {
   }
 }
 </script>
-
-<style lang="scss" scoped></style>

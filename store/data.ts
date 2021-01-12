@@ -8,36 +8,21 @@ import { $axios } from '~/utils/api'
   // dynamic: true,
 })
 export default class DataModule extends VuexModule {
-  public permissionList: Array<any> = []
+  public data: any = {}
 
   @Mutation
-  setPermissionList(payload: any) {
-    this.permissionList = payload
+  private setData(payload: any) {
+    this.data = payload
   }
 
-  @Action({ commit: 'setPermissionList' })
-  public async getPermissionList({ token }: any) {
-    // const requestBody: ProxyRequestObject = {
-    //   token,
-    //   endpoint: '/Backend/Sys/GetPermissionList',
-    //   method: 'post',
-    //   data: {
-    //     start: 0,
-    //     length: 10
-    //   }
-    // }
-
-    // try {
-    //   const result: ResponseObject = await $axios.post('/api', requestBody)
-    //   switch (Number(result.data.syscode)) {
-    //     case 200:
-    //       return result.data.data
-    //     default:
-    //       throw new Error('Error fetching')
-    //   }
-    // } catch (e) {
-    //   throw new Error(e)
-    // }
-    return 'Placeholder'
+  @Action({ commit: 'setData' })
+  public async sendGetExperienceRequest() : Promise<any> {
+    try {
+      const res = await $axios.get('/data.json')
+      return res.data
+    } catch(e) {
+      console.log('Error: ' + e.message)
+      return []
+    }
   }
 }
