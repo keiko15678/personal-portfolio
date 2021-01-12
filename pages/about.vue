@@ -4,16 +4,7 @@
     <div class="container">
       <div class="row">
         <div class="col result">
-          <div class="about" v-html="about">
-
-            <ul>
-            <li>Mandarin (Traditional & Simplified)</li>
-            <li>English (U.S.)</li>
-            <li>Japanese</li>
-            <li>Spanish (Latin America)</li>
-          </ul>
-          </div>
-          
+          <div class="about" v-html="about"></div>
         </div>
       </div>
     </div>

@@ -198,7 +198,7 @@
 
 <script lang="ts">
 import { Component, Vue, Watch } from 'nuxt-property-decorator'
-import { Card, Links, Tab, Settings, Info, Dropdown } from '~/types/index.ts'
+import { Card, Links, Tab, Settings, Info } from '~/types/index.ts'
 import { $axios } from '~/utils/api.ts'
 import { dataStore } from '~/store/index'
 
@@ -245,7 +245,7 @@ export default class Index extends Vue {
   // TODO
   private handleSearch(): void {}
 
-  private dropdown: Dropdown = {
+  private dropdown: any = {
     about: false,
     contact: false,
     contactFooter: false,
