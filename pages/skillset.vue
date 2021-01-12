@@ -73,7 +73,7 @@ import { dataStore } from '~/store/index'
     BaseCard,
   },
 })
-export default class Projects extends Vue {
+export default class Skill extends Vue {
   private get skillset(): Skillset {
     return dataStore.data.skillset ? dataStore.data.skillset : {}
   }

@@ -20,7 +20,7 @@ import { dataStore } from '~/store/index'
 @Component({
   layout: 'default'
 })
-export default class Projects extends Vue {
+export default class Index extends Vue {
   private handleVisitLink(link: string) {
     if (link && link !== '') {
       const info: Card | undefined = this.experience.find((item: Card) => item.link === link)
@@ -37,11 +37,5 @@ export default class Projects extends Vue {
   private get experience(): Array<Card> {
     return dataStore.data ? dataStore.data.experience : []
   }
-
-  private created(): void {
-
-  }
 }
 </script>
-
-<style lang="scss"></style>

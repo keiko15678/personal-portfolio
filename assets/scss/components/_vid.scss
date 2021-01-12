@@ -149,6 +149,7 @@
     margin-top: 24px;
     flex: 0 0 50%;
     justify-self: start;
+    background-color: $darken2;
     text-align: center;
     @include grid-md {
       margin-top: 0;
@@ -159,7 +160,8 @@
     border-radius: 4px;
     font-size: 18px;
     padding: 12px 36px;
-    cursor: pointer;
+    cursor: not-allowed;
+    // cursor: pointer;
   }
   &__categories {
     margin-top: 12px;

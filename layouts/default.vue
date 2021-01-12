@@ -68,16 +68,16 @@
         <div class="search__funcBox">
           <button class="link link--first" @click="handleToggleDropdown($event, 'about')">
             About
-            <div class="link__dropdown" v-show="dropdown.about">
+            <div class="link__dropdown" v-show="dropdown.about" @click="$event.stopPropagation()">
               {{ 'v' + info.version || '1.0' }}- inspired by <a href="https://pornhub.com" target="_blank">Pornhub.com</a>
             </div>
           </button>
           <button class="link" @click="handleToggleDropdown($event, 'contact')">
             Contact
-            <div class="link__dropdown" v-show="dropdown.contact">
+            <div class="link__dropdown" v-show="dropdown.contact" @click="$event.stopPropagation()">
               <div class="link__dropdownChild">
                 Email:
-                <a href="mailto:keiko15678@gmail.com?subject:work-inquiries&body=work-inquiries">
+                <a :href="`mailto:${info.email}?subject:work-inquiries&body=work-inquiries`">
                   {{ info.email }}
                 </a>
               </div>
@@ -113,13 +113,92 @@
           <Nuxt />
         </main>
       </div>
+      <div class="footer">
+        <div class="footer__top">
+          <div class="container">
+            <div class="footer__topBarBox">
+              <div class="footer__topBar">
+                <div class="footer__topBarTitle">Information</div>
+                <div class="footer__topBarList">
+                  <div class="footer__topBarListItem" v-for="item in tabs" :key="item.id" @click="handleUpdateTab(item.id, item.route)">{{ item.name }}</div>
+                </div>
+              </div>
+              <div class="footer__topBar">
+                <div class="footer__topBarTitle">inquiries</div>
+                <div class="footer__topBarList">
+                  <div class="footer__topBarListItem">
+                    <a :href="`mailto:${info.email}?subject:work-inquiries&body=work-inquiries`">
+                      Email
+                    </a>
+                  </div>
+                  <div class="footer__topBarListItem">
+                    <div class="link" @click="handleToggleDropdown($event, 'contactFooter')">
+                      Phone
+                      <div class="link__dropdown" v-show="dropdown.contactFooter" @click="$event.stopPropagation()">
+                        <div>{{ info.phone }}</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="footer__topBar">
+                <div class="footer__topBarTitle">About</div>
+                <div class="footer__topBarList">
+                  <div class="footer__topBarListItem">
+                    <div class="link" @click="handleToggleDropdown($event, 'aboutFooter')">
+                      Version
+                      <div class="link__dropdown" v-show="dropdown.aboutFooter" @click="$event.stopPropagation()">
+                        {{ 'v' + info.version || '1.0' }}- inspired by <a href="https://pornhub.com" target="_blank">Pornhub.com</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="footer__topBarLangBox">
+              <div class="footer__topBarLang">
+                <div class="footer__topBarLangLabel">Language:</div>
+                <select name="" id="">
+                  <option value="english">English</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="footer__bottom">
+            <div class="footer__bottomLeft">
+              <div @click="handleExternalLink(0)" class="footer__bottomLeftItem footer__bottomLeftItem--active">
+                <fa :icon="['fab', 'github']" class="headerMobile__icon headerMobile__icon--search"></fa>
+              </div>
+              <div @click="handleExternalLink(0)" class="footer__bottomLeftItem footer__bottomLeftItem--active">
+                <fa :icon="['fab', 'linkedin']" class="headerMobile__icon headerMobile__icon--search"></fa>
+              </div>
+              <div class="footer__bottomLeftItem">
+                <fa :icon="['fas', 'star']" class="headerMobile__icon headerMobile__icon--search"></fa>
+              </div>
+              <div class="footer__bottomLeftItem">
+                <fa :icon="['fas', 'star']" class="headerMobile__icon headerMobile__icon--search"></fa>
+              </div>
+              <div class="footer__bottomLeftItem">
+                <fa :icon="['fas', 'star']" class="headerMobile__icon headerMobile__icon--search"></fa>
+              </div>
+            </div>
+            <div class="footer__bottomRight">
+              <div class="footer__bottomRightItem">
+                &copy; IreneHub.com, 2021
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue, Watch } from 'nuxt-property-decorator'
-import { Card, Links, Tab, Settings, Info } from '~/types/index.ts'
+import { Card, Links, Tab, Settings, Info, Dropdown } from '~/types/index.ts'
 import { $axios } from '~/utils/api.ts'
 import { dataStore } from '~/store/index'
 
@@ -139,7 +218,7 @@ export default class Index extends Vue {
 
   private processTabChange(route: string): void {
     const tab: string | null = window.localStorage.getItem('tab')
-    if (route === '/' || route === '/projects' || route === '/skillset' || route === '/background' || route === '/blog') {
+    if (route === '/' || route === '/projects' || route === '/skillset' || route === '/background' || route === '/blog' || route === '/resume') {
       this.tabShow = true
     }
     if (tab !== null && this.tabShow) {
@@ -156,6 +235,7 @@ export default class Index extends Vue {
     this.$router.push({ path: route })
     window.localStorage.setItem('tab', tab.toString())
     this.navOpen = false
+    window.scrollTo(0, 0)
   }
 
   private handleExternalLink(id: number): void {
@@ -165,9 +245,11 @@ export default class Index extends Vue {
   // TODO
   private handleSearch(): void {}
 
-  private dropdown: any = {
+  private dropdown: Dropdown = {
     about: false,
     contact: false,
+    contactFooter: false,
+    aboutFooter: false
   }
 
   private handleToggleDropdown($event: Event, name: string): void {
@@ -200,25 +282,19 @@ export default class Index extends Vue {
     return dataStore.data.info ? dataStore.data.info : {}
   }
 
-  private hideScrollbarWhenLoading(loading: boolean): void {
-    const body = document.querySelector('body')
-    
-    console.log(body)
-    if(loading && body) {
-      body.style.overflow = 'hidden'
-    } else if(!loading && body) {
-      body.style.overflow = 'auto'
-    }
-  }
-
   private timeout: any = null
 
+  private get welcomeMsg(): string {
+    return dataStore.data.settings ? dataStore.data.settings.welcomeMsg : 'Welcome...'
+  }
+
   private initWelcomeMessage(): void {
-    let str = 'Welcome...'
-    for(let i = 0; i < str.length; i++) {
+    for(let i = 0; i < this.welcomeMsg.length; i++) {
       this.timeout = setTimeout(() => {
-        this.query += str[i]
-      }, 500 * (i + 1))
+        this.timeout = setTimeout(() => {
+          this.query += this.welcomeMsg[i]
+        }, 500 * (i + 1))
+      }, 1500)
     }
   }
 

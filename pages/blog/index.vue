@@ -4,7 +4,7 @@
     <div class="container">
       <div class="row">
         <div class="col result">
-          Under Construction
+          In Development...
         </div>
       </div>
     </div>

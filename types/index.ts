@@ -14,6 +14,13 @@ export interface Card {
   location?: string
 }
 
+export interface Dropdown {
+  about: boolean,
+  contact: boolean,
+  contactFooter: boolean,
+  aboutFooter: boolean
+}
+
 export interface Links {
   [index: number]: string
 }
@@ -49,4 +56,9 @@ export interface Skillset {
   languages: Array<Card>,
   os: Array<Card>,
   webServers: Array<Card>
+}
+
+export interface Resume {
+  online: Array<Card>,
+  download: Array<Card>
 }

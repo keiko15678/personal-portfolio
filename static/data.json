@@ -17,7 +17,7 @@
         "Deno",
         "Docker"
       ],
-      "comments": ["aaa", "bbb", "ccc"],
+      "comments": [],
       "link": "/detail/inno",
       "duration": 1234,
       "name": "Inno Tech",
@@ -61,7 +61,10 @@
       "imageUrl": "",
       "fullName": "365 Internet Technologies",
       "stack": ["React", "Vue 2", "Nuxt.js", "Node.js", "PHP", "mySQL", "Webpack", "Npm", "Yarn", "Docker"],
-      "comments": ["aaa", "bbb", "ccc"],
+      "comments": [
+        "Created Apps for internal CMS systems and real-time Casino App UI, including money processing, real-time data display, and web crawling. Main technologies used includes VueJS, ReactJS, Sass and Typescript for the frontend and NodeJS along with MySQL for the backend.",
+        "Daily routine includes cooperation and meetings with UI/UX designers, other frontend and backend engineers, PMs, and the scrum master. Development process used was mainly Agile with 1 week per Sprint."
+      ],
       "link": "/detail/365",
       "duration": 1234,
       "name": "365 Internet Technologies",
@@ -75,7 +78,9 @@
       "imageUrl": "/linkedin.png",
       "fullName": "LinkedIn",
       "stack": ["Python", "Java", "Java Struts"],
-      "comments": ["aaa", "bbb", "ccc"],
+      "comments": [
+        "Internship experience including reading of Python and Java documentation and implementing minutiae features such as data-verification microservices and upper-layers of authentication microservices."
+      ],
       "link": "/detail/linkedin",
       "duration": 1234,
       "name": "LinkedIn",
@@ -261,7 +266,7 @@
         "source": "https://github.com/keiko15678/ecommerce_lavine",
         "duration": 1234,
         "name": "Mini Ecommerce #2 Client + Server (Paypal, Stripe)",
-        "sourceUrl": "ES6 + JQuery + Node.js",
+        "sourceUrl": "ES6 + JQuery + Node.js + MongoDB",
         "publishDate": 3000050000000,
         "rating": 99
       }
@@ -670,19 +675,69 @@
       }
     ]
   },
+  "resume": {
+    "download": [
+      {
+        "id": 0,
+        "imageUrl": "/resumeio.png",
+        "fullName": "",
+        "stack": [],
+        "comments": [],
+        "link": "https://resume.io/r/djsuqt5k0",
+        "duration": 1234,
+        "name": "[English] Resume - Frontend Engineer",
+        "sourceUrl": "keiko15678",
+        "publishDate": "4 months ago",
+        "rating": " - v3.0.0",
+        "location": ""
+      },
+      {
+        "id": 1,
+        "imageUrl": "/104.png",
+        "fullName": "",
+        "stack": [],
+        "comments": [],
+        "link": "/resume.pdf",
+        "duration": 1234,
+        "name": "[Mandarin] Resume - Frontend Engineer",
+        "sourceUrl": "keiko15678",
+        "publishDate": "3 months ago",
+        "rating": " - v2.1.0",
+        "location": ""
+      }
+    ],
+    "online": [
+      {
+        "id": 2,
+        "imageUrl": "/104.png",
+        "fullName": "",
+        "stack": [],
+        "comments": [],
+        "link": "https://pda.104.com.tw/profile/share/1XeSiHNGJAkvaC8fNjjypGRjwvF0FMU0",
+        "duration": 1234,
+        "name": "[Mandarin] 104 Resume - Frontend Engineer",
+        "sourceUrl": "keiko15678",
+        "publishDate": "3 months ago",
+        "rating": " - v2.1.0",
+        "location": ""
+      }
+    ]
+  },
   "settings": {
     "tabs": [
       { "name": "experience", "id": 0, "route": "/" },
       { "name": "projects", "id": 1, "route": "/projects" },
+      { "name": "resume", "id": 3, "route": "/resume" },
       { "name": "skillset", "id": 2, "route": "/skillset" },
-      { "name": "background", "id": 3, "route": "/background" },
-      { "name": "blog", "id": 4, "route": "/blog" }
+      { "name": "background", "id": 4, "route": "/background" },
+      { "name": "blog", "id": 5, "route": "/blog" }
     ],
     "headers": ["THIS", "PROJECT", "IS", "ONLY", "FOR", "SHOWCASE", "AND", "DEMONSTRATION", "PURPOSES"],
     "externalLinkMap": {
       "0": "https://github.com/keiko15678",
       "1": "https://www.linkedin.com/in/keiko-chuang-8185a71a3/"
-    }
+    },
+    "welcomeMsg": "Welcome :)"
   },
   "info": {
     "email": "keiko15678@gmail.com",

@@ -1,6 +1,8 @@
 <template>
   <div v-if="loading" class="loading">
-    <p class="loading__text">Loading...</p>
+    <div class="loading__text">
+      <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    </div>
   </div>
 </template>
 
@@ -42,10 +44,6 @@ export default class BaseLoading extends Vue {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: #000;
-    letter-spacing: 1.5px;
-    font-size: 32px;
-    font-weight: 100;
   }
 }
 </style>

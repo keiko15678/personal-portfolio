@@ -132,7 +132,7 @@ import BaseCard from '~/components/BaseCard.vue'
     BaseCard,
   },
 })
-export default class WorkInno extends Vue {
+export default class DetailId extends Vue {
   private stack: Array<string> = []
 
   private slide: number = 0
