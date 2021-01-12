@@ -67,7 +67,7 @@
         </div>
         <div class="search__funcBox">
           <button class="link link--first" @click="handleToggleDropdown($event, 'about')">
-            About
+            Version
             <div class="link__dropdown" v-show="dropdown.about" @click="$event.stopPropagation()">
               {{ 'v' + info.version || '1.0' }}- inspired by <a href="https://pornhub.com" target="_blank">Pornhub.com</a>
             </div>
@@ -103,7 +103,7 @@
         <div
           class="tabs__item"
         >
-          HOME
+          ABOUT
         </div>
       </div>
     </div>
@@ -218,7 +218,7 @@ export default class Index extends Vue {
 
   private processTabChange(route: string): void {
     const tab: string | null = window.localStorage.getItem('tab')
-    if (route === '/' || route === '/projects' || route === '/skillset' || route === '/background' || route === '/blog' || route === '/resume') {
+    if (route === '/' || route === '/projects' || route === '/skillset' || route === '/background' || route === '/blog' || route === '/resume' || route === '/about') {
       this.tabShow = true
     }
     if (tab !== null && this.tabShow) {

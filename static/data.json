@@ -725,12 +725,13 @@
   },
   "settings": {
     "tabs": [
-      { "name": "experience", "id": 0, "route": "/" },
-      { "name": "projects", "id": 1, "route": "/projects" },
+      { "name": "about", "id": 0, "route": "/about" },
+      { "name": "experience", "id": 1, "route": "/" },
+      { "name": "projects", "id": 2, "route": "/projects" },
       { "name": "resume", "id": 3, "route": "/resume" },
-      { "name": "skillset", "id": 2, "route": "/skillset" },
-      { "name": "background", "id": 4, "route": "/background" },
-      { "name": "blog", "id": 5, "route": "/blog" }
+      { "name": "skillset", "id": 4, "route": "/skillset" },
+      { "name": "background", "id": 5, "route": "/background" },
+      { "name": "blog", "id": 6, "route": "/blog" }
     ],
     "headers": ["THIS", "PROJECT", "IS", "ONLY", "FOR", "SHOWCASE", "AND", "DEMONSTRATION", "PURPOSES"],
     "externalLinkMap": {
@@ -742,6 +743,7 @@
   "info": {
     "email": "keiko15678@gmail.com",
     "phone": "(+886)968918091",
-    "version": "1.0.0"
+    "version": "1.0.0",
+    "about": "<div class=\"title\">Introduction</div><div class=\"pp\">&nbsp;&nbsp;&nbsp;&nbsp;Web Developer and M.L. Engineer in the SassS industry with 2yrs. experience in both the frontend and the backend mainly with the stack consisting of Sass, VueJS, NuxtJS, Node.js, mySQL, pgSQL, Redis, and Docker, including but not limited to SEO optimizations, bundler configurations, server-side rendering technologies, SQL transaction optimizations, and custom web socket design. Additional experience in IaC with the likes of Azure DevOps and Azure Cloud, including CI/CD pipeline creation and modification, Web App containerization, and Web App / Static Frontend deployment to Azure Container Registry, Azure App Service, and Azure Kubernetes Service.</div><div class=\"title\">Basic Info</div><ul><li><span class=\"li-title\">Location: </span>Taipei, Taiwan / Remote</li><li><span class=\"li-title\">Phone: </span>(+886)968918091</li><li><span class=\"li-title\">Email: </span>keiko15678@gmail.com</li></ul><div class=\"title\">Verbal Languages</div><ul><li><span class=\"li-title\">Mandarin (Traditional & Simplified): </span>Native</li><li><span class=\"li-title\">English (U.S.): </span>Native</li><li><span class=\"li-title\">Japanese: </span>Conversational</li><li><span class=\"li-title\">Spanish (Latin America): </span>Conversational</li></ul>"
   }
 }
