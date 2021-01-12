@@ -51,7 +51,7 @@ export default class Projects extends Vue {
     { id: 4, imageUrl: '/calendar-vue.png', link: 'https://keiko15678.github.io/calendarapp-vue/#/', source: 'https://github.com/keiko15678/calendarapp-vue', duration: 1234, name: 'Calendar Booking Client + Backend (LINE Login)', sourceUrl: 'Vue + Node.js', publishDate: 3000050000000, rating: 99 },
     { id: 2, imageUrl: '/shop-site-vue.png', link: 'https://keiko15678.github.io/shopsite-vue/#/', source: 'https://github.com/keiko15678/shopsite-vue', duration: 1234, name: 'Mini Ecommerce Client/CMS + Backend (LINE PAY)', sourceUrl: 'Vue + Node.js', publishDate: 3000050000000, rating: 99 },
     { id: 3, imageUrl: '/hotel-booking.png', link: 'https://keiko15678.github.io/hotel-demo/', source: 'https://github.com/keiko15678/hotel-demo', duration: 1234, name: 'Hotel Booking Client', sourceUrl: 'ES6 + JQuery', publishDate: 3000050000000, rating: 99 },
-    { id: 3, imageUrl: '/ecommerce-lavine.png', link: 'https://safe-ridge-34093.herokuapp.com/', source: 'https://github.com/keiko15678/ecommerce_lavine', duration: 1234, name: 'Mini Ecommerce Client + Backend (Paypal, Stripe)', sourceUrl: 'ES6 + JQuery', publishDate: 3000050000000, rating: 99 }
+    { id: 5, imageUrl: '/ecommerce-lavine.png', link: 'https://safe-ridge-34093.herokuapp.com/', source: 'https://github.com/keiko15678/ecommerce_lavine', duration: 1234, name: 'Mini Ecommerce Client + Backend (Paypal, Stripe)', sourceUrl: 'ES6 + JQuery', publishDate: 3000050000000, rating: 99 }
   ]
 
   private handleVisitLink(link: string) {

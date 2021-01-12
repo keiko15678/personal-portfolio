@@ -28,7 +28,7 @@
     <div class="container">
       <div class="row">
         <div class="col result">
-          <BaseCard :properties="item" v-for="item in cloud" :key="item.id" @click-pic="handleVisitLink(item.link)" @click-source="handleVisitLink(item.source)" />
+          <BaseCard :properties="item" v-for="item in cloud" :key="item.id" />
         </div>
       </div>
     </div>
