@@ -44,7 +44,7 @@ export default {
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {},
   router: {
-    base: '/keiko15678/'
+    base: '/personal-portfolio/'
   },
   env: {
     API_URL: process.env.NUXT_ENV_API_URL || 'http://localhost:3000',
