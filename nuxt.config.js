@@ -43,13 +43,13 @@ export default {
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {},
-  router: {
-    base: '/personal-portfolio/'
-  },
+  // router: {
+  //   base: '/personal-portfolio/'
+  // },
   env: {
     API_URL: process.env.NUXT_ENV_API_URL || 'http://localhost:3000',
     TIMEOUT_LIMIT: process.env.NUXT_ENV_TIMEOUT_LIMIT,
   },
   loading: '~/components/BaseLoading.vue',
-  publicPath: '/assets/'
+  // publicPath: '/assets/'
 }
