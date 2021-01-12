@@ -12,11 +12,11 @@
       </div>
     </div>
     <transition name="slide">
-    <div class="navMobile__mask" v-show="navOpen">
-      <div class="navMobile">
-        <div class="navMobile__item" :class="{ 'navMobile__item--current': tab === item.id }" v-for="item in tabs" :key="item.id" @click="handleUpdateTab(item.id, item.route)">{{ item.name }}</div>
+      <div class="navMobile__mask" v-show="navOpen">
+        <div class="navMobile">
+          <div class="navMobile__item" :class="{ 'navMobile__item--current': tab === item.id }" v-for="item in tabs" :key="item.id" @click="handleUpdateTab(item.id, item.route)">{{ item.name }}</div>
+        </div>
       </div>
-    </div>
     </transition>
     <div class="header__bg">
       <div class="container" v-if="headers.length">
@@ -162,6 +162,7 @@ export default class Index extends Vue {
     window.open(this.externalLinkMap[id], '_blank')
   }
 
+  // TODO
   private handleSearch(): void {}
 
   private dropdown: any = {
@@ -198,9 +199,6 @@ export default class Index extends Vue {
   private get info(): Info {
     return dataStore.data.info ? dataStore.data.info : {}
   }
-  
-  private async created(): Promise<void> {
-  }
 
   private hideScrollbarWhenLoading(loading: boolean): void {
     const body = document.querySelector('body')
@@ -213,6 +211,17 @@ export default class Index extends Vue {
     }
   }
 
+  private timeout: any = null
+
+  private initWelcomeMessage(): void {
+    let str = 'Welcome...'
+    for(let i = 0; i < str.length; i++) {
+      this.timeout = setTimeout(() => {
+        this.query += str[i]
+      }, 500 * (i + 1))
+    }
+  }
+
   private mounted(): void {
     const route: string = this.$route.path
     this.processTabChange(route)
@@ -220,7 +229,12 @@ export default class Index extends Vue {
       this.$nuxt.$loading.start()
       await dataStore.sendGetExperienceRequest()
       this.$nuxt.$loading.finish()
+      this.initWelcomeMessage()
     })
+  }
+
+  private beforeDestroy(): void {
+    this.timeout = null
   }
 }
 </script>

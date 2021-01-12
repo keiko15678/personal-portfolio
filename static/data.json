@@ -678,7 +678,7 @@
       { "name": "background", "id": 3, "route": "/background" },
       { "name": "blog", "id": 4, "route": "/blog" }
     ],
-    "headers": ["THIS", "SITE", "IS", "FOR", "PORTFOLIO", "SHOWCASE", "AND", "DEMONSTRATION", "PURPOSES", "ONLY"],
+    "headers": ["THIS", "PROJECT", "IS", "ONLY", "FOR", "SHOWCASE", "AND", "DEMONSTRATION", "PURPOSES"],
     "externalLinkMap": {
       "0": "https://github.com/keiko15678",
       "1": "https://www.linkedin.com/in/keiko-chuang-8185a71a3/"
