@@ -91,3 +91,4 @@ sw.*
 
 # test files
 test.sh
+heroku-deploy-output.txt

@@ -4,3 +4,4 @@ npm-debug*
 docker-build-local.sh
 docker-push-dockerhub.sh
 heroku-deploy.sh
+heroku-deploy-output.txt
