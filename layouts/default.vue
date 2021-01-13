@@ -171,7 +171,7 @@
               <div @click="handleExternalLink(0)" class="footer__bottomLeftItem footer__bottomLeftItem--active">
                 <fa :icon="['fab', 'github']" class="headerMobile__icon headerMobile__icon--search"></fa>
               </div>
-              <div @click="handleExternalLink(0)" class="footer__bottomLeftItem footer__bottomLeftItem--active">
+              <div @click="handleExternalLink(1)" class="footer__bottomLeftItem footer__bottomLeftItem--active">
                 <fa :icon="['fab', 'linkedin']" class="headerMobile__icon headerMobile__icon--search"></fa>
               </div>
               <div class="footer__bottomLeftItem">
