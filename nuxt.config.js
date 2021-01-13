@@ -51,5 +51,7 @@ export default {
     TIMEOUT_LIMIT: process.env.NUXT_ENV_TIMEOUT_LIMIT,
   },
   loading: '~/components/BaseLoading.vue',
-  // publicPath: '/assets/'
+  server: {
+    port: process.env.PORT || 3000
+  }
 }

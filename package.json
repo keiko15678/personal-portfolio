@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "nuxt-ts",
-    "build": "cross-env NUXT_HOST=0.0.0.0 NUXT_PORT=3000 nuxt-ts build",
-    "start": "cross-env NUXT_HOST=0.0.0.0 NUXT_PORT=3000 nuxt-ts start",
-    "generate": "cross-env NUXT_HOST=0.0.0.0 NUXT_PORT=3000 nuxt-ts generate",
+    "build": "cross-env nuxt-ts build",
+    "start": "cross-env nuxt-ts start",
+    "generate": "cross-env nuxt-ts generate",
     "test": "jest"
   },
   "dependencies": {
