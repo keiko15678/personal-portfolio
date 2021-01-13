@@ -2,6 +2,7 @@ node_modules
 npm-debug*
 .nuxt
 docker-build-local.sh
-docker-push-dockerhub.sh
+docker-build-push.sh
+dockerhub-push.sh
 heroku-deploy.sh
 heroku-deploy-output.txt
