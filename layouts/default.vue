@@ -223,8 +223,16 @@ export default class Index extends Vue {
     }
     if (tab !== null && this.tabShow) {
       this.tab = Number(tab)
-      const routeObj = this.tabs.find((item: Tab) => item.id === Number(tab))
+      const routeObj = this.tabs.find((item: Tab) => Number(item.id) === Number(tab))
       if (routeObj) {
+        this.$router.push(routeObj.route)
+      }
+    } else if(tab === null) {
+      const path = this.$route.path
+      const routeObj: Tab | undefined = this.tabs.find((item: Tab) => item.route === path)
+      if (routeObj) {
+        window.localStorage.setItem('tab', routeObj.id.toString())
+        this.processTabChange(routeObj.route)
         this.$router.push(routeObj.route)
       }
     }
@@ -300,10 +308,10 @@ export default class Index extends Vue {
 
   private mounted(): void {
     const route: string = this.$route.path
-    this.processTabChange(route)
     this.$nextTick(async () => {
       this.$nuxt.$loading.start()
       await dataStore.sendGetExperienceRequest()
+      this.processTabChange(route)
       this.$nuxt.$loading.finish()
       this.initWelcomeMessage()
     })
