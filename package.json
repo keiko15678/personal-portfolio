@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "nuxt-ts",
-    "build": "nuxt-ts build",
-    "start": "nuxt-ts start",
-    "generate": "nuxt-ts generate",
+    "build": "cross-env NUXT_HOST=0.0.0.0 NUXT_PORT=3000 nuxt-ts build",
+    "start": "cross-env NUXT_HOST=0.0.0.0 NUXT_PORT=3000 nuxt-ts start",
+    "generate": "cross-env NUXT_HOST=0.0.0.0 NUXT_PORT=3000 nuxt-ts generate",
     "test": "jest"
   },
   "dependencies": {
@@ -19,6 +19,7 @@
     "@nuxtjs/axios": "^5.12.2",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
+    "cross-env": "^7.0.3",
     "nuxt": "^2.14.6",
     "nuxt-property-decorator": "^2.8.3"
   },
