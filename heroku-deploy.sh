@@ -1,10 +1,10 @@
 #!/bin/bash
 
-#heroku login
+heroku login
 docker ps
 heroku container:login
-docker build -t app .
-docker image ls
-# docker run -it -p 3000:3000 app
-heroku container:push web
-heroku container:release web
+# docker build -t app .
+# docker image ls
+./docker-push-dockerhub.sh
+docker tag keiko15678/ire:app registry.heroku.com/personal-portfolio-irene/web
+docker push registry.heroku.com/personal-portfolio-irene/web
