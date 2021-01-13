@@ -6,3 +6,5 @@ docker-build-push.sh
 dockerhub-push.sh
 heroku-deploy.sh
 heroku-deploy-output.txt
+azure-deploy.sh
+azure-push.sh

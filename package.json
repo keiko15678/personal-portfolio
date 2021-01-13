@@ -5,10 +5,13 @@
   "scripts": {
     "dev": "nuxt-ts",
     "build": "cross-env nuxt-ts build",
+    "build:bind": "cross-env NUXT_PORT=3000 NUXT_HOST=0.0.0.0 nuxt-ts build",
     "start": "cross-env nuxt-ts start",
+    "start:bind": "cross-env NUXT_PORT=3000 NUXT_HOST=0.0.0.0 nuxt-ts start",
     "generate": "cross-env nuxt-ts generate",
     "test": "jest",
-    "heroku": "bash ./heroku-deploy.sh"
+    "heroku": "bash ./heroku-deploy.sh",
+    "azure": "bash ./azure-deploy.sh"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
