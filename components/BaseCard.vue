@@ -26,7 +26,7 @@
       <fa icon="check-circle" class="card__authorIcon"></fa>
       {{ properties.sourceUrl }}
     </div>
-    <div class="card__footer">
+    <div class="card__footer" v-if="$route.path !== '/projects'">
       <div class="card__views">
         {{
           typeof properties.publishDate === 'number'
@@ -37,9 +37,10 @@
       <div class="card__ratings">
         {{ typeof properties.publishDate === 'number' ? properties.rating + '%' : properties.rating }}
       </div>
-      <div
-        class="card__source"
-        v-if="properties.source === '' || properties.source"
+    </div>
+    <div class="card__footer" v-else>
+      <div 
+        class="card__views" 
         :class="{
           'card__source--active': properties.source && properties.source !== '',
           'card__source--disabled': !properties.source || properties.source === '',
@@ -47,6 +48,16 @@
         @click="$emit('click-source', $event)"
       >
         Source
+      </div>
+      <div
+        class="card__ratings"
+        :class="{
+          'card__source--activeLink': properties.link && properties.link !== '',
+          'card__source--disabledLink': !properties.link || properties.link === '',
+        }"
+        @click="$emit('click-pic', $event)"
+      >
+        Demo
       </div>
     </div>
   </div>

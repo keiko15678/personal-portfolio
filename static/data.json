@@ -273,6 +273,17 @@
     ],
     "template": [
       {
+        "id": 160,
+        "imageUrl": "/nuxt-ts-docker-template.png",
+        "link": "https://keiko15678.github.io/nuxt-ts-docker-template/",
+        "source": "https://github.com/keiko15678/nuxt-ts-docker-template",
+        "duration": 1234,
+        "name": "Nuxt + TS + Docker with CI/CD Config",
+        "sourceUrl": "Nuxt + TS + Docker",
+        "publishDate": 3000050000000,
+        "rating": 99
+      },
+      {
         "id": 16,
         "imageUrl": "",
         "link": "",
@@ -460,6 +471,15 @@
         "publishDate": "Node.js Projects Containerizations"
       },
       {
+        "id": 161,
+        "imageUrl": "/heroku.jpeg",
+        "link": "",
+        "duration": 1234,
+        "name": "Heroku",
+        "sourceUrl": "2+ years",
+        "publishDate": "Heroku CI/CD via Dockerhub & Github"
+      },
+      {
         "id": 17,
         "imageUrl": "/k8s.png",
         "link": "",
@@ -475,8 +495,7 @@
         "duration": 1234,
         "name": "Github Actions",
         "sourceUrl": "1+ years",
-        "publishDate": "Gh-page Deployments",
-        "rating": 99
+        "publishDate": "Gh-page Deployment Automations"
       },
       {
         "id": 19,

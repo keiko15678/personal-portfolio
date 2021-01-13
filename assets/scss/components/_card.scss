@@ -91,5 +91,15 @@
       text-decoration: line-through;
       cursor: not-allowed;
     }
+    &--activeLink {
+      color: $white;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+    &--disabledLink {
+      color: $lighten;
+      text-decoration: line-through;
+      cursor: not-allowed;
+    }
   }
 }
