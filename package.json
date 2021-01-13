@@ -7,7 +7,8 @@
     "build": "cross-env nuxt-ts build",
     "start": "cross-env nuxt-ts start",
     "generate": "cross-env nuxt-ts generate",
-    "test": "jest"
+    "test": "jest",
+    "heroku": "bash ./heroku-deploy.sh"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
