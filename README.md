@@ -12,6 +12,8 @@
 - Github Actions
 - Dockerhub https://hub.docker.com/layers/132999844/keiko15678/ire/app/images/sha256-982a88f47fa74285782b4bcaad06c8fe5a1756dd8d5531856d6489f74d4e9d8c?context=explore
 - Heroku via Dockerhub https://personal-portfolio-irene.herokuapp.com/
+- Azure via Azure Container Registry & Azure App Service, static files upload at Azure Storage Account https://irene.cafe
+- Automatic deployments from Github Repository to ACR & automatic pulls from ACR tp ASE.
 
 ## Build Setup
 

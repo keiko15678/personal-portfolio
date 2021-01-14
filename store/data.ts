@@ -1,4 +1,5 @@
 import { Module, VuexModule, Action, Mutation } from 'vuex-module-decorators'
+import { AxiosResponse } from 'axios'
 import { $axios } from '~/utils/api'
 import { determineStaticAssetsPath } from '~/utils/static'
 
@@ -18,7 +19,7 @@ export default class DataModule extends VuexModule {
     this.data = payload
   }
 
-  @Mutation 
+  @Mutation
   public setStaticPrefix() {
     this.staticPrefix = determineStaticAssetsPath()
   }
@@ -26,8 +27,8 @@ export default class DataModule extends VuexModule {
   @Action({ commit: 'setData' })
   public async sendGetExperienceRequest() : Promise<any> {
     try {
-      const res = await $axios.get('/data.json')
-      return res.data
+      const res: AxiosResponse = await $axios.post('/api', { endpoint: '/static/data.json', method: 'get' })
+      return JSON.parse(res.data.data)
     } catch(e) {
       console.log('Error: ' + e.message)
       return []

@@ -47,7 +47,7 @@ export default {
   //   base: '/personal-portfolio/'
   // },
   env: {
-    API_URL: process.env.NUXT_ENV_API_URL || 'http://localhost:3000',
+    API_URL: process.env.NUXT_ENV_API_URL || 'http://localhost:8080',
     BLOB_URL: process.env.NUXT_ENV_BLOB_URL || null,
     TIMEOUT_LIMIT: process.env.NUXT_ENV_TIMEOUT_LIMIT,
   },
