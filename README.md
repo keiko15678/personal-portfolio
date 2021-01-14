@@ -9,7 +9,7 @@
 
 ## CI/CD Supports
 
-- Github Actions
+- Github Actions via pushes to master branch (gh-page route not configured, however)
 - Dockerhub https://hub.docker.com/layers/132999844/keiko15678/ire/app/images/sha256-982a88f47fa74285782b4bcaad06c8fe5a1756dd8d5531856d6489f74d4e9d8c?context=explore
 - Heroku via Dockerhub https://personal-portfolio-irene.herokuapp.com/
 - Azure via Azure Container Registry & Azure App Service, static files stored and retrieved via Azure Storage Account https://irene.cafe
@@ -36,7 +36,7 @@ $ npm run generate
 ## Containerization & Deployment
 
 ```bash
-# deploy to Heroku
+# deploy to Heroku via Dockerhub
 $ npm run heroku
 
 # deploy to Azure App Service via Azure Container Registy
