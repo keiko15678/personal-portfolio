@@ -35,7 +35,7 @@ export default class Index extends Vue {
   }
 
   private get experience(): Array<Card> {
-    return dataStore.data ? dataStore.data.experience : []
+    return dataStore.data.experience ? dataStore.data.experience : []
   }
 }
 </script>

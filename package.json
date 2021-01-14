@@ -11,7 +11,8 @@
     "generate": "cross-env nuxt-ts generate",
     "test": "jest",
     "heroku": "bash ./heroku-deploy.sh",
-    "azure": "bash ./azure-deploy.sh"
+    "azure": "bash ./azure-deploy.sh",
+    "azure:blob": "bash ./azure-deploy-data.sh"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.32",

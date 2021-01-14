@@ -42,6 +42,7 @@
             $router.push('/')
             tab = 0
           "
+          :style="{ 'background-image': `url(${'logo.png'})`}"
         ></div>
         <div class="search__bar">
           <input
@@ -204,6 +205,7 @@ import { dataStore } from '~/store/index'
 
 @Component({
   layout: 'default',
+  middleware: ['static']
 })
 export default class Index extends Vue {
   private navOpen: boolean = false
@@ -306,11 +308,37 @@ export default class Index extends Vue {
     }
   }
 
+  private reformatData(): any {
+    let dataReformatted: any = {}
+    Object.keys(dataStore.data).forEach((item: string) => {
+      const target = dataStore.data[item]
+      if(item === 'info' || item === 'settings') {
+        dataReformatted[item] = { ...target }
+      } else if(target instanceof Array) {
+        dataReformatted[item] = [...target.map((card: Card) => {
+          return { ...card, staticPath: dataStore.staticPrefix }
+        })]
+      } else if(target instanceof Object) {
+        dataReformatted[item] = {}
+        Object.keys(target).forEach((targetItem: string) => {
+          const res = target[targetItem].map((card: Card) => {
+            return { ...card, staticPath: dataStore.staticPrefix }
+          })
+          dataReformatted[item] = { ...dataReformatted[item], [targetItem]: res }
+        })
+      } else {
+        dataReformatted[item] = target
+      }
+    })
+    return dataReformatted
+  }
+
   private mounted(): void {
     const route: string = this.$route.path
     this.$nextTick(async () => {
       this.$nuxt.$loading.start()
       await dataStore.sendGetExperienceRequest()
+      dataStore.setData(this.reformatData())
       this.processTabChange(route)
       this.$nuxt.$loading.finish()
       this.initWelcomeMessage()

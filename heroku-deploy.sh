@@ -5,7 +5,7 @@ HEROKU_APP_NAME=personal-portfolio-irene
 HEROKU_APP_TYPE=web
 
 DOCKER_REMOTE_ADDR=keiko15678/ire:app
-DOCKER_FILE_PATH=Dockerfile
+DOCKER_FILE_PATH=Dockerfile.heroku
 
 $HEROKU_API_KEY heroku container:login
 

@@ -48,6 +48,7 @@ export default {
   // },
   env: {
     API_URL: process.env.NUXT_ENV_API_URL || 'http://localhost:3000',
+    BLOB_URL: process.env.NUXT_ENV_BLOB_URL || null,
     TIMEOUT_LIMIT: process.env.NUXT_ENV_TIMEOUT_LIMIT,
   },
   loading: '~/components/BaseLoading.vue',

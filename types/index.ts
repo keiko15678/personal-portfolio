@@ -11,7 +11,8 @@ export interface Card {
   fullName?: string,
   stack?: Array<string>,
   comments?: Array<string>,
-  location?: string
+  location?: string,
+  staticPath: string
 }
 
 export interface Dropdown {

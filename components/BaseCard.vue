@@ -5,7 +5,9 @@
       @click="$emit('click-pic', $event)"
       :style="{
         'background-image':
-          properties.imageUrl && properties.imageUrl !== '' ? `url(${properties.imageUrl})` : '/card-placeholder.png',
+          properties.imageUrl && properties.imageUrl !== '' 
+            ? `url(${properties.staticPath ? properties.staticPath.concat(properties.imageUrl) : properties.imageUrl})` 
+            : 'card-placeholder.png',
       }"
       :class="{
         'card__pic--active': properties.link && properties.link !== '',
