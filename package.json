@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "nuxt-ts",
+    "dev": "cross-env NUXT_PORT=3000 NUXT_HOST=0.0.0.0 nuxt-ts",
     "build": "cross-env nuxt-ts build",
     "build:bind": "cross-env NUXT_PORT=3000 NUXT_HOST=0.0.0.0 nuxt-ts build",
     "start": "cross-env nuxt-ts start",
