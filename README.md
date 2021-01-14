@@ -14,6 +14,7 @@
 - Heroku via Dockerhub https://personal-portfolio-irene.herokuapp.com/
 - Azure via Azure Container Registry & Azure App Service, static files stored and retrieved via Azure Storage Account https://irene.cafe
 - Automatic deployments from Github Repo to ACR & automatic pulls from ACR to ASE.
+- Forward Proxy for outgoing Http requests (WebSocket also supported).
 
 ## Build Setup
 
