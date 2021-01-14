@@ -138,7 +138,7 @@
       },
       {
         "id": 4,
-        "imageUrl": "/stayfun-fe.png",
+        "imageUrl": "/stayfun-fe.PNG",
         "link": "https://tst-stayfun.mayohr.com",
         "duration": 1234,
         "name": "STAYFUN Client",
@@ -149,7 +149,7 @@
       },
       {
         "id": 5,
-        "imageUrl": "/stayfun-be-2.png",
+        "imageUrl": "/stayfun-be-2.PNG",
         "link": "",
         "duration": 1234,
         "name": "STAYFUN CMS v2",
@@ -160,7 +160,7 @@
       },
       {
         "id": 51,
-        "imageUrl": "/stayfun-be.png",
+        "imageUrl": "/stayfun-be.PNG",
         "link": "https://tst-stayfun.mayohr.com/Backend",
         "duration": 1234,
         "name": "STAYFUN CMS v1",
@@ -206,7 +206,7 @@
     "personal": [
       {
         "id": 9,
-        "imageUrl": "/portfolio.png",
+        "imageUrl": "/portfolio.PNG",
         "link": "",
         "source": "https://github.com/keiko15678/personal-portfolio",
         "duration": 1234,

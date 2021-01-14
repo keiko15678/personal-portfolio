@@ -204,10 +204,9 @@ import { $axios } from '~/utils/api.ts'
 import { dataStore } from '~/store/index'
 
 @Component({
-  layout: 'default',
   middleware: ['static']
 })
-export default class Index extends Vue {
+export default class Default extends Vue {
   private navOpen: boolean = false
 
   private query: string = ''
@@ -216,7 +215,7 @@ export default class Index extends Vue {
 
   private static tabInit: number = 999999999
 
-  private tab: number = Index.tabInit
+  private tab: number = Default.tabInit
 
   private processTabChange(route: string): void {
     const tab: string | null = window.localStorage.getItem('tab')

@@ -12,7 +12,8 @@
     "test": "jest",
     "heroku": "bash ./heroku-deploy.sh",
     "azure": "bash ./azure-deploy.sh",
-    "azure:blob": "bash ./azure-deploy-data.sh"
+    "azure:blob": "bash ./azure-deploy-data.sh all",
+    "azure:data": "bash ./azure-deploy-data.sh data"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
