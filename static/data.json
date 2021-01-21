@@ -128,7 +128,7 @@
       {
         "id": 3,
         "imageUrl": "/lasso-1.png",
-        "link": "",
+        "link": "https://questionnaire-fe.azurewebsites.net/",
         "duration": 1234,
         "name": "Lasso Assessment Client + CMS",
         "source": "https://github.com/keiko15678/lasso-frontend",
