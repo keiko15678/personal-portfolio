@@ -229,7 +229,7 @@
       {
         "id": 9,
         "imageUrl": "/portfolio.PNG",
-        "link": "",
+        "link": "https://personal-portfolio.azurewebsites.net/",
         "source": "https://github.com/keiko15678/personal-portfolio",
         "duration": 1234,
         "name": "Portfolio Client",
