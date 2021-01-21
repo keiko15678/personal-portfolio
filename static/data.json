@@ -139,10 +139,21 @@
       {
         "id": 4,
         "imageUrl": "/stayfun-fe.PNG",
-        "link": "https://tst-stayfun.mayohr.com",
+        "link": "https://ecommerce-fe.azurewebsites.net/",
         "duration": 1234,
         "name": "STAYFUN Client",
-        "source": "",
+        "source": "https://github.com/keiko15678/ecommerce-fe-nuxt-ts",
+        "sourceUrl": "Nuxt + Typescript + ESLint",
+        "publishDate": 3000050000000,
+        "rating": 99
+      },
+      {
+        "id": 41,
+        "imageUrl": "",
+        "link": "https://ecommerce-proxy.azurewebsites.net/",
+        "duration": 1234,
+        "name": "STAYFUN Client",
+        "source": "https://github.com/keiko15678/ecommerce-proxy-node",
         "sourceUrl": "Nuxt + Typescript + ESLint",
         "publishDate": 3000050000000,
         "rating": 99
