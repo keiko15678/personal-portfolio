@@ -152,7 +152,7 @@
         "imageUrl": "",
         "link": "https://ecommerce-proxy.azurewebsites.net/",
         "duration": 1234,
-        "name": "STAYFUN Client",
+        "name": "STAYFUN Client Proxy",
         "source": "https://github.com/keiko15678/ecommerce-proxy-node",
         "sourceUrl": "Nuxt + Typescript + ESLint",
         "publishDate": 3000050000000,
