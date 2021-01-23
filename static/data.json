@@ -93,6 +93,17 @@
   "projects": {
     "enterprise": [
       {
+        "id": 43,
+        "imageUrl": "/aries.png",
+        "link": "https://blockchain-stake-demo.azurewebsites.net/",
+        "source": "",
+        "duration": 1234,
+        "name": "MAYO Landing Client",
+        "sourceUrl": "React + Gatsby",
+        "publishDate": 3000050000000,
+        "rating": 99
+      },
+      {
         "id": 0,
         "imageUrl": "/mayo-landing.png",
         "link": "https://preview-mayo-official-rg1.azurewebsites.net/",
