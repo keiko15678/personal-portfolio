@@ -1,8 +1,10 @@
 .footer {
   color: #fff;
-  padding: 0 12px;
-  &__top {
+  &__bgTop {
     background-color: $darken2;
+  }
+  &__top {
+    padding: 0 12px;
     border-top: 1px solid $darken;
   }
   &__topBarBox {
@@ -86,6 +88,12 @@
     align-items: center;
     padding-top: 16px;
     padding-bottom: 28px;
+    padding-left: 12px;
+    padding-right: 12px;
+    @include grid-xl {
+      padding-left: 0;
+      padding-right: 0;
+    }
   }
   &__bottomLeft {
     display: flex;

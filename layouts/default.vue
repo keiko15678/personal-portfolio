@@ -114,85 +114,89 @@
           <Nuxt />
         </main>
       </div>
-      <div class="footer">
-        <div class="footer__top">
+      <!-- <div class="footer__bgTop"> -->
+        <div class="footer">
+          <div class="footer__bgTop">
+            <div class="footer__top">
+              <div class="container">
+                <div class="footer__topBarBox">
+                  <div class="footer__topBar">
+                    <div class="footer__topBarTitle">Information</div>
+                    <div class="footer__topBarList">
+                      <div class="footer__topBarListItem" v-for="item in tabs" :key="item.id" @click="handleUpdateTab(item.id, item.route)">{{ item.name }}</div>
+                    </div>
+                  </div>
+                  <div class="footer__topBar">
+                    <div class="footer__topBarTitle">inquiries</div>
+                    <div class="footer__topBarList">
+                      <div class="footer__topBarListItem">
+                        <a :href="`mailto:${info.email}?subject:work-inquiries&body=work-inquiries`">
+                          Email
+                        </a>
+                      </div>
+                      <div class="footer__topBarListItem">
+                        <div class="link" @click="handleToggleDropdown($event, 'contactFooter')">
+                          Phone
+                          <div class="link__dropdown" v-show="dropdown.contactFooter" @click="$event.stopPropagation()">
+                            <div>{{ info.phone }}</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="footer__topBar">
+                    <div class="footer__topBarTitle">About</div>
+                    <div class="footer__topBarList">
+                      <div class="footer__topBarListItem">
+                        <div class="link" @click="handleToggleDropdown($event, 'aboutFooter')">
+                          Version
+                          <div class="link__dropdown" v-show="dropdown.aboutFooter" @click="$event.stopPropagation()">
+                            {{ 'v' + info.version || '1.0' }}- inspired by <a href="https://pornhub.com" target="_blank">Pornhub.com</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="footer__topBarLangBox">
+                  <div class="footer__topBarLang">
+                    <div class="footer__topBarLangLabel">Language:</div>
+                    <select name="" id="">
+                      <option value="english">English</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="container">
-            <div class="footer__topBarBox">
-              <div class="footer__topBar">
-                <div class="footer__topBarTitle">Information</div>
-                <div class="footer__topBarList">
-                  <div class="footer__topBarListItem" v-for="item in tabs" :key="item.id" @click="handleUpdateTab(item.id, item.route)">{{ item.name }}</div>
+            <div class="footer__bottom">
+              <div class="footer__bottomLeft">
+                <div @click="handleExternalLink(0)" class="footer__bottomLeftItem footer__bottomLeftItem--active">
+                  <fa :icon="['fab', 'github']" class="headerMobile__icon headerMobile__icon--search"></fa>
+                </div>
+                <div @click="handleExternalLink(1)" class="footer__bottomLeftItem footer__bottomLeftItem--active">
+                  <fa :icon="['fab', 'linkedin']" class="headerMobile__icon headerMobile__icon--search"></fa>
+                </div>
+                <div class="footer__bottomLeftItem">
+                  <fa :icon="['fas', 'star']" class="headerMobile__icon headerMobile__icon--search"></fa>
+                </div>
+                <div class="footer__bottomLeftItem">
+                  <fa :icon="['fas', 'star']" class="headerMobile__icon headerMobile__icon--search"></fa>
+                </div>
+                <div class="footer__bottomLeftItem">
+                  <fa :icon="['fas', 'star']" class="headerMobile__icon headerMobile__icon--search"></fa>
                 </div>
               </div>
-              <div class="footer__topBar">
-                <div class="footer__topBarTitle">inquiries</div>
-                <div class="footer__topBarList">
-                  <div class="footer__topBarListItem">
-                    <a :href="`mailto:${info.email}?subject:work-inquiries&body=work-inquiries`">
-                      Email
-                    </a>
-                  </div>
-                  <div class="footer__topBarListItem">
-                    <div class="link" @click="handleToggleDropdown($event, 'contactFooter')">
-                      Phone
-                      <div class="link__dropdown" v-show="dropdown.contactFooter" @click="$event.stopPropagation()">
-                        <div>{{ info.phone }}</div>
-                      </div>
-                    </div>
-                  </div>
+              <div class="footer__bottomRight">
+                <div class="footer__bottomRightItem">
+                  &copy; IreneHub.com, 2021
                 </div>
-              </div>
-              <div class="footer__topBar">
-                <div class="footer__topBarTitle">About</div>
-                <div class="footer__topBarList">
-                  <div class="footer__topBarListItem">
-                    <div class="link" @click="handleToggleDropdown($event, 'aboutFooter')">
-                      Version
-                      <div class="link__dropdown" v-show="dropdown.aboutFooter" @click="$event.stopPropagation()">
-                        {{ 'v' + info.version || '1.0' }}- inspired by <a href="https://pornhub.com" target="_blank">Pornhub.com</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="footer__topBarLangBox">
-              <div class="footer__topBarLang">
-                <div class="footer__topBarLangLabel">Language:</div>
-                <select name="" id="">
-                  <option value="english">English</option>
-                </select>
               </div>
             </div>
           </div>
         </div>
-        <div class="container">
-          <div class="footer__bottom">
-            <div class="footer__bottomLeft">
-              <div @click="handleExternalLink(0)" class="footer__bottomLeftItem footer__bottomLeftItem--active">
-                <fa :icon="['fab', 'github']" class="headerMobile__icon headerMobile__icon--search"></fa>
-              </div>
-              <div @click="handleExternalLink(1)" class="footer__bottomLeftItem footer__bottomLeftItem--active">
-                <fa :icon="['fab', 'linkedin']" class="headerMobile__icon headerMobile__icon--search"></fa>
-              </div>
-              <div class="footer__bottomLeftItem">
-                <fa :icon="['fas', 'star']" class="headerMobile__icon headerMobile__icon--search"></fa>
-              </div>
-              <div class="footer__bottomLeftItem">
-                <fa :icon="['fas', 'star']" class="headerMobile__icon headerMobile__icon--search"></fa>
-              </div>
-              <div class="footer__bottomLeftItem">
-                <fa :icon="['fas', 'star']" class="headerMobile__icon headerMobile__icon--search"></fa>
-              </div>
-            </div>
-            <div class="footer__bottomRight">
-              <div class="footer__bottomRightItem">
-                &copy; IreneHub.com, 2021
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <!-- </div> -->
     </div>
   </div>
 </template>
